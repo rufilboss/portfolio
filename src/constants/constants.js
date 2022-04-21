@@ -40,7 +40,7 @@ export const projects = [
 export const TimeLineData = [
   { year: 2019, text: 'Finished High School', },
   { year: 2020, text: 'Start My Coding Journey', },
-  { year: 2021, text: 'Dive into DevOps', },
+  { year: 2021, text: 'Offically dive into DevOps', },
   { year: 2022, text: 'Advance My DevOps Skills', },
-  { year: 2023, text: 'Hoping to get my full time as a DevOps Engineer', },
+  { year: 2023, text: 'Hoping to get my full time job as a DevOps Engineer', },
 ];
