@@ -12,9 +12,9 @@ export const projects = [
     title: 'DevOps Practice',
     description: "Use my DevOps skills to setup a server, containerize an app, deploy a full Realtime Application and a CI/CD for auto deployments.",
     image: '/images/4.jpg',
-    tags: ['nginx', 'AWS', 'Terraform', 'Docker', 'Linux'],
-    source: 'https://google.com',
-    visit: 'https://google.com',
+    tags: ['AWS', 'Terraform', 'Docker', 'Linux', 'nginx', 'Apache'],
+    source: 'https://github.com/rufilboy',
+    visit: 'https://github.com/rufilboy',
     id: 1,
   },
   {
