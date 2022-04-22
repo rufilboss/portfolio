@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import { Section, SectionText, SectionTitle } from '../../styles/GlobalComponents';
@@ -17,7 +18,9 @@ const Hero = (props) => (
         I'm a DevOps Enginer with an inview of helping companies and 
         startups delivers better software by automating the deployment stuffs with modern tools.
         </SectionText>
+        <Link href={'https://linktr.ee/rufilboy'}>
         <Button onClick={props.handleClick}>Learn More</Button>
+        </Link>
       </LeftSection>
     </Section>
   </>
