@@ -2,7 +2,7 @@ export const projects = [
   {
     title: 'Portfolio',
     description: "My personal portfolio built with NextJS",
-    image: '/images/1.png',
+    image: '/images/port.png',
     tags: ['Next.js', 'netlify'],
     source: 'https://github.com/rufilboy/portfolio',
     visit: 'https://rufilboy.netlify.com',
@@ -20,7 +20,7 @@ export const projects = [
   {
     title: 'To-Do List App',
     description: "This is a to-do list webapp that helps you to schedule  your activities on daily basics.",
-    image: '/images/3.jpg',
+    image: '/images/todo.jpg',
     tags: ['Python3', 'Django'],
     source: 'https://github.com/rufilboy/Todo_List_App',
     visit: '',
@@ -29,7 +29,7 @@ export const projects = [
   {
     title: 'YouTube Downloader',
     description:"A webapp that allows you to download video direct on to your devices from YouTube",
-    image: '/images/2.png',
+    image: '/images/yout.png',
     tags: ['Python', 'Django'],
     source: 'https://github.com/rufilboy/YouTube-Downloader',
     visit: 'https://google.com',
