@@ -11,7 +11,7 @@ const Hero = (props) => (
         <SectionTitle main center>
           Hi I'm Ilyas Rufai <br/>
           Welcome To <br />
-          My Personal Portfolio
+          My Portfolio Site
         </SectionTitle>
         <SectionText>
         I'm a DevOps Enginer with an inview of helping companies and 
