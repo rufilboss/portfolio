@@ -15,7 +15,7 @@ const Hero = (props) => (
         </SectionTitle>
         <SectionText>
         I'm a DevOps Enginer with an inview of helping companies and 
-        startups delivers better software by automation using modern tools.
+        startups delivers better software by automating the deployment stuffs with modern tools.
         </SectionText>
         <Button onClick={props.handleClick}>Learn More</Button>
       </LeftSection>
