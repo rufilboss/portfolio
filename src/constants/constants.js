@@ -10,9 +10,9 @@ export const projects = [
   },
   {
     title: 'Automate many deploment',
-    description: "Use my DevOps skills to setup a server, deploy and a CI/CD for auto deployments for a full Realtime Application",
+    description: "Use my DevOps skills to setup a server, deploy a full Realtime Application and a CI/CD for auto deployments.",
     image: '/images/4.jpg',
-    tags: ['React', 'ChatEngine', 'Firebase'],
+    tags: ['nginx', 'AWS', 'Terraform', 'Docker', 'Linux'],
     source: 'https://google.com',
     visit: 'https://google.com',
     id: 1,
