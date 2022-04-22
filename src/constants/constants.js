@@ -20,7 +20,7 @@ export const projects = [
   {
     title: 'To-Do List App',
     description: "This is a to-do list webapp that helps you to schedule  your activities on daily basics.",
-    image: '/images/todo.jpg',
+    image: '/images/todo.png',
     tags: ['Python3', 'Django'],
     source: 'https://github.com/rufilboy/Todo_List_App',
     visit: '',
