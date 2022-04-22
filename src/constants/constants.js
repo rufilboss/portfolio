@@ -23,7 +23,7 @@ export const projects = [
     image: '/images/todo.png',
     tags: ['Python3', 'Django'],
     source: 'https://github.com/rufilboy/Todo_List_App',
-    visit: '',
+    visit: '#',
     id: 2,
   },
   {
@@ -32,7 +32,7 @@ export const projects = [
     image: '/images/yout.png',
     tags: ['Python', 'Django'],
     source: 'https://github.com/rufilboy/YouTube-Downloader',
-    visit: 'https://google.com',
+    visit: '#',
     id: 3,
   },
 ];
