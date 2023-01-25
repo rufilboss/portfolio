@@ -49,8 +49,9 @@ const Timeline = () => {
       Hello, I'm <strong>Ilyas Rufai Ayodeji.</strong> I started my coding journey in 2019 
       immediately after my secondary school education. I'm a DevOps engineer 
       with in view of helping companies deliver better software. Some other areas 
-      I'm interested in is CyberSecurity, DevSecOps, Robotics and IoT.<br/> I currently work at Basira App(fintech) as 
-      a Jr. DevOps Engineer and a Co-Founder & CTO of HyperTech Startup Labs(HTSL).
+      I'm interested in is CyberSecurity, DevSecOps, Robotics and IoT.
+      <br/> I work at Basira App(fintech) as a Jr. DevOps Engineer currently and a Co-Founder & 
+      CTO of HyperTech Startup Labs(HTSL).
       </SectionText>
       <CarouselContainer ref={carouselRef} onScroll={handleScroll}>
         <>

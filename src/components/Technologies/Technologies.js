@@ -9,7 +9,8 @@ const Technologies = () =>  (
     <SectionTitle>Skills & Technologies</SectionTitle>
     <SectionText>
       I've worked with a range of technologies in the web development world.
-      From web development to DevOps
+      My journey in tech is somehow confusing, from Python developer to Data Scientist, 
+      then to DevOps Engineer from DevOps to ???😋 😛 😝 😜 🤪
     </SectionText>
     <List>
       <ListItem>
