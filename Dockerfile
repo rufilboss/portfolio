@@ -3,11 +3,11 @@ FROM node:16.13.2-alpine as build
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn install
 
-COPY . ./
+COPY . .
 
 RUN yarn build
 

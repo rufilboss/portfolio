@@ -15,8 +15,8 @@ const Hero = (props) => (
           My Portfolio Site
         </SectionTitle>
         <SectionText>
-        I'm a DevOps Enginer with an inview of helping companies and 
-        startups delivers better software by automating the deployment stuffs with modern tools.
+        I'm a DevOps Engineer with an inview of helping companies and 
+        startups deliver better software by automating the deployment stuffs with modern tools.
         </SectionText>
         <Link href={'https://linktr.ee/rufilboy'}>
         <Button onClick={props.handleClick}>Learn More</Button>

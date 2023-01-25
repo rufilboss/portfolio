@@ -20,7 +20,7 @@ const Technologies = () =>  (
           <ListTitle>Front-End</ListTitle>
           <ListParagraph>
             Experiece with <br />
-            HTML & CSS
+            HTML & CSS, React JS, Next JS...
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -32,7 +32,7 @@ const Technologies = () =>  (
           <ListTitle>Back-End</ListTitle>
           <ListParagraph>
             Experience with <br />
-            Python(Django & Flask), and MySql Database
+            Python(Django & Flask), JavaScript, Node JS, and databases
           </ListParagraph>
         </ListContainer>
       </ListItem>
@@ -44,7 +44,7 @@ const Technologies = () =>  (
           <ListTitle>DevOps</ListTitle>
           <ListParagraph>
             Experience with <br />
-            tools like Terraform, Docker, AWS and many more...
+            tools like Docker, Terraform, Linux, Bash, Python, AWS cloud, Digital Ocean, Jenkins & Github Actions and many more...
           </ListParagraph>
         </ListContainer>
       </ListItem>
