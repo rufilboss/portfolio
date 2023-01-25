@@ -32,7 +32,7 @@ const Header = () =>  (
       </li>
       <li>
         <Link href={'https://rufilboy.substack.com'}>
-        <Button onClick={props.handleClick}>Blog</Button>
+          Blog
         </Link>
       </li>
       {/* <li>
