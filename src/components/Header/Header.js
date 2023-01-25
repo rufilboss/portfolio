@@ -10,7 +10,7 @@ const Header = () =>  (
     <Div1>
       <Link href="/">
         <a style={{ display: 'flex', alignItems: 'center', color:"white" }}>
-          <DiCssdeck size="3rem" /> <span>Portfolio</span>
+          <DiCssdeck size="3rem" /> <span>rufilboy</span>
         </a>
       </Link>
     </Div1>
@@ -27,7 +27,7 @@ const Header = () =>  (
       </li>        
       <li>
         <Link href="#tech">
-          <NavLink>Skils</NavLink>
+          <NavLink>Skills</NavLink>
         </Link>
       </li>
       <li>
@@ -35,11 +35,11 @@ const Header = () =>  (
         <Button onClick={props.handleClick}>Blog</Button>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link href="#contact">
-          {/* <NavLink>Contact</NavLink> */}
+          <NavLink>Contact</NavLink>
         </Link>
-      </li>
+      </li> */}
     </Div2>
       <Div3>
         <SocialIcons href="https://www.github.com/rufilboy">
