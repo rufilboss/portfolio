@@ -32,14 +32,14 @@ const Header = () =>  (
       </li>
       <li>
         <Link href={'https://rufilboy.substack.com'}>
-          Blog
+          <NavLink>Blog</NavLink>
         </Link>
       </li>
-      {/* <li>
+      <li>
         <Link href="#contact">
           <NavLink>Contact</NavLink>
         </Link>
-      </li> */}
+      </li>
     </Div2>
       <Div3>
         <SocialIcons href="https://www.github.com/rufilboy">
