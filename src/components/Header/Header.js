@@ -31,7 +31,7 @@ const Header = () =>  (
         </Link>
       </li>
       <li>
-        <Link href={'https://rufilboy.substack.com'}>
+        <Link href='https://rufilboy.substack.com'>
           <a>Blog</a>
         </Link>
       </li>
