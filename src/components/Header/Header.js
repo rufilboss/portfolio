@@ -32,7 +32,7 @@ const Header = () =>  (
       </li>
       <li>
         <Link href='https://rufilboy.substack.com'>
-          <a>Blog</a>
+          <NavLink href = 'https://rufilboy.substack.com'>Blog</NavLink>
         </Link>
       </li>
       <li>
