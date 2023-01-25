@@ -50,7 +50,7 @@ const Timeline = () => {
       immediately after my secondary school education. I'm a DevOps engineer 
       with in view of helping companies deliver better software. Some other areas 
       I'm interested in is CyberSecurity, DevSecOps, Robotics and IoT.
-      <br/> I work at Basira App(fintech) as a Jr. DevOps Engineer currently and a Co-Founder & 
+      <br/> I work at Basira App(fintech) as a Jr. DevOps Engineer currently and also a Co-Founder & 
       CTO of HyperTech Startup Labs(HTSL).
       </SectionText>
       <CarouselContainer ref={carouselRef} onScroll={handleScroll}>
