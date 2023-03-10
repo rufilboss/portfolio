@@ -32,6 +32,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.ref }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:v0.6
           run: |
-            echo "New tag deployed Successfully"
+            echo "New tag deployed Successfully🚀🚀🚀"
