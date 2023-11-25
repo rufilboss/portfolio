@@ -13,9 +13,7 @@ import {
   DiTerraform,
   DiAnsible,
 
-} 
-
-from "react-icons/di";
+} from "react-icons/di";
 import {
   SiRedis,
   SiFirebase,
