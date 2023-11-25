@@ -16,29 +16,24 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              A LITTLE <span className="purple"> ABOUT </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I fell in love with programming and I have at least learnt
-              something, I think… 🤷‍♂️
+            I am a dedicated and proficient DevOps Engineer, leveraging a robust background to automate, 
+            optimize, and streamline software development and deployment processes.
               <br />
-              <br />I am fluent in classics like
+              <br />I am fluent in flieds like
               <i>
                 <b className="purple"> Python, Javascript and Go. </b>
               </i>
               <br />
               <br />
-              My field of Interest's are building new &nbsp;
-              <i>
-                <b className="purple">Web Technologies and Products </b> and
-                also in areas related to{" "}
-                <b className="purple">
-                  Blockchain.
-                </b>
-              </i>
+              My technological journey has endowed me with a versatile 
+              skill set centered on crafting resilient and efficient cloud infrastructure.
               <br />
               <br />
-              Whenever possible, I also apply my passion for developing products
+              Delve into my portfolio to gain insights into my projects and experiences.
+              {/* Whenever possible, I also apply my passion for developing products
               with <b className="purple">Node.js</b> and
               <i>
                 <b className="purple">
@@ -49,7 +44,7 @@ function Home2() {
               &nbsp; like
               <i>
                 <b className="purple"> React.js and Next.js</b>
-              </i>
+              </i> */}
             </p>
           </Col>
           <Col md={4} className="myAvtar">
