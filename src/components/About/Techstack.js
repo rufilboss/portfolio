@@ -9,7 +9,7 @@ import {
   DiGit,
   DiDocker,
   DiJenkins,
-  DiAnsible,
+  // DiAnsible,
 
 } from "react-icons/di";
 import {
@@ -39,9 +39,9 @@ function Techstack() {
       {/* <Col xs={4} md={2} className="tech-icons">
         <IoLogoTerraform />
       </Col> */}
-      <Col xs={4} md={2} className="tech-icons">
+      {/* <Col xs={4} md={2} className="tech-icons">
         <DiAnsible />
-      </Col>
+      </Col> */}
       <Col xs={4} md={2} className="tech-icons">
         <DiJavascript1 />
       </Col>
