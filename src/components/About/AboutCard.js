@@ -32,6 +32,7 @@ function AboutCard() {
             and innovation to the forefront of any technological endeavor.
             <br />
             I'm an undergrate student at University Of Ilorin, Nigeria.
+            <br/>
             <br />
             Apart from coding, some other activities that I love to do!
           </p>
