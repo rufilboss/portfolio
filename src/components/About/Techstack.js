@@ -19,7 +19,7 @@ import {
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
 import { IoLogoTerraform } from 'react-icons/io';
-import { FaKubernetes } from 'react-icons/lib/fa';
+// import { FaKubernetes } from 'react-icons/lib/fa';
 
 function Techstack() {
   return (
@@ -30,9 +30,9 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <DiDocker />
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
+      {/* <Col xs={4} md={2} className="tech-icons">
         <FaKubernetes />
-      </Col>
+      </Col> */}
       <Col xs={4} md={2} className="tech-icons">
         <DiJenkins />
       </Col>
