@@ -18,7 +18,7 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
-import { IoLogoTerraform } from 'react-icons/io';
+// import { IoLogoTerraform } from 'react-icons/io';
 // import { FaKubernetes } from 'react-icons/lib/fa';
 
 function Techstack() {
@@ -36,9 +36,9 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <DiJenkins />
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
+      {/* <Col xs={4} md={2} className="tech-icons">
         <IoLogoTerraform />
-      </Col>
+      </Col> */}
       <Col xs={4} md={2} className="tech-icons">
         <DiAnsible />
       </Col>
