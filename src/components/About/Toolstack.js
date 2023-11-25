@@ -4,9 +4,10 @@ import {
   SiVisualstudiocode,
   SiPostman,
   SiSlack,
-  SiCloud,
+  // SiCloud,
   SiLinux,
 } from "react-icons/si";
+import { FaCloud } from 'react-icons/fa';
 
 function Toolstack() {
   return (
@@ -24,7 +25,7 @@ function Toolstack() {
         <SiSlack />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiCloud />
+        <FaCloud />
       </Col>
     </Row>
   );
