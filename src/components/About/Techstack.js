@@ -19,7 +19,7 @@ import {
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
 import { IoLogoTerraform } from 'react-icons/io';
-import { FaKubernetes } from 'react-icons/fa';
+import { FaKubernetes } from 'react-icons/lib/fa';
 
 function Techstack() {
   return (
