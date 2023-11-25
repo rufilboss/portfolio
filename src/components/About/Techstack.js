@@ -8,7 +8,7 @@ import {
   DiPython,
   DiGit,
   DiDocker,
-  DiKubernetes,
+  // DiKubernetes,
   DiJenkins,
   DiTerraform,
   DiAnsible,
@@ -30,9 +30,9 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <DiDocker />
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
+      {/* <Col xs={4} md={2} className="tech-icons">
         <DiKubernetes />
-      </Col>
+      </Col> */}
       <Col xs={4} md={2} className="tech-icons">
         <DiJenkins />
       </Col>
