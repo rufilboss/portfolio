@@ -18,8 +18,11 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
-// import { IoLogoTerraform } from 'react-icons/io';
-// import { FaKubernetes } from 'react-icons/lib/fa';
+import {
+  SiKubernetes,
+  SiTerraform,
+  SiAnsible,
+} from "react-icons/si";
 
 function Techstack() {
   return (
@@ -30,18 +33,18 @@ function Techstack() {
       <Col xs={4} md={2} className="tech-icons">
         <DiDocker />
       </Col>
-      {/* <Col xs={4} md={2} className="tech-icons">
-        <FaKubernetes />
-      </Col> */}
+      <Col xs={4} md={2} className="tech-icons">
+        <SiKubernetes />
+      </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiJenkins />
       </Col>
-      {/* <Col xs={4} md={2} className="tech-icons">
-        <IoLogoTerraform />
-      </Col> */}
-      {/* <Col xs={4} md={2} className="tech-icons">
-        <DiAnsible />
-      </Col> */}
+      <Col xs={4} md={2} className="tech-icons">
+        <SiTerraform />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiAnsible />
+      </Col>
       <Col xs={4} md={2} className="tech-icons">
         <DiJavascript1 />
       </Col>
