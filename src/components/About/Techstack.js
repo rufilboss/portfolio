@@ -9,7 +9,6 @@ import {
   DiGit,
   DiDocker,
   DiJenkins,
-  // DiAnsible,
 
 } from "react-icons/di";
 import {
