@@ -17,7 +17,9 @@ import {
   SiTerraform,
   SiAnsible,
   SiPrometheus,
-  SiGrafana
+  SiGrafana,
+  SiChef,
+  SiPuppet,
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
 
@@ -71,6 +73,12 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiGrafana />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiChef />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiPuppet />
       </Col>
     </Row>
   );
