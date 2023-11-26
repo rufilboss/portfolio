@@ -20,6 +20,7 @@ import {
   SiGrafana,
   SiChef,
   SiPuppet,
+  SiRabbitMQ,
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
 
@@ -79,6 +80,9 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiPuppet />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiRabbitMQ />
       </Col>
     </Row>
   );

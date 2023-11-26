@@ -22,9 +22,9 @@ function Home2() {
             I am a dedicated and proficient DevOps Engineer, leveraging a robust background to automate, 
             optimize, and streamline software development and deployment processes.
               <br />
-              <br />I am fluent in flieds like
+              <br />As a DevOps Engineer, my proficiency extends across critical areas such as;
               <i>
-                <b className="purple"> Python, Javascript and Go. </b>
+                <b className="purple"> system design, automation, and infrastructure orchestration. </b>
               </i>
               <br />
               <br />
@@ -33,18 +33,6 @@ function Home2() {
               <br />
               <br />
               Delve into my portfolio to gain insights into my projects and experiences.
-              {/* Whenever possible, I also apply my passion for developing products
-              with <b className="purple">Node.js</b> and
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i>
-              &nbsp; like
-              <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i> */}
             </p>
           </Col>
           <Col md={4} className="myAvtar">
