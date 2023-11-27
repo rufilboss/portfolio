@@ -39,7 +39,7 @@ function Projects() {
               imgPath={days100}
               isBlog={false}
               title="100DaysOfDevOps"
-              description="This serves as my documentation hub for delving into the DevOps realm. Starting my journey on July 25, 2022, I made a 100-day commitment to 
+              description="This serves as my documentation hub for delving into the DevOps realm. Started this journey on July 25, 2022, I made a 100-day commitment to 
                           devote at least one hour daily, including weekends, to immerse myself in gaining a comprehensive understanding and knowledge of diverse 
                           aspects within the world of DevOps."
               ghLink="https://github.com/rufilboss/100DaysOfDevOps"
