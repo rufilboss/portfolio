@@ -5,7 +5,7 @@ import Particle from "../Particle";
 import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
+import logiq from "../../Assets/Projects/logiq.png";
 import suicide from "../../Assets/Projects/suicide.png";
 import bitsOfCode from "../../Assets/Projects/blog.png";
 
@@ -23,12 +23,14 @@ function Projects() {
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={logiq}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/rufilboss/Chatify"
-              demoLink="https://chatify-49.web.app/"
+              title="LogIQ"
+              description="LogIQ is an open-source web performance monitoring tool that provides a comprehensive analysis of website performance on both desktop and 
+                          mobile devices. With LogIQ, website owners and developers can gain deep insights into their website's performance and take actions to 
+                          improve the speed and user experience."
+              ghLink="https://github.com/FreeOps-Tools/LogIQ"
+              demoLink="https://logiq.netlify.app/"
             />
           </Col>
 
