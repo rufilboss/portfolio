@@ -7,7 +7,7 @@ import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
 import logiq from "../../Assets/Projects/logiq.png";
 import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+import days100 from "../../Assets/Projects/days100.png";
 
 function Projects() {
   return (
@@ -36,12 +36,14 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={days100}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/rufilboss/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              title="100DaysOfDevOps"
+              description="This serves as my documentation hub for delving into the DevOps realm. Starting my journey on July 25, 2022, I made a 100-day commitment to 
+                          devote at least one hour daily, including weekends, to immerse myself in gaining a comprehensive understanding and knowledge of diverse 
+                          aspects within the world of DevOps."
+              ghLink="https://github.com/rufilboss/100DaysOfDevOps"
+              demoLink="https://github.com/rufilboss/100DaysOfDevOps"
             />
           </Col>
 
