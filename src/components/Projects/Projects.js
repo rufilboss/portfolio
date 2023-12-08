@@ -51,10 +51,11 @@ function Projects() {
             <ProjectCard
               imgPath={editor}
               isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/rufilboss/"
-              // demoLink="https://editor.soumya-jit.tech/"              
+              title="Microservices Architecture"
+              description="Throughout this project, I leveraged various DevOps tools to implement a microservices architecture and deployment, 
+                          including Docker, Kubernetes, Helm, Terraform, and more."
+              ghLink="https://github.com/rufilboss/microservices-deploy/"
+              demoLink="https://github.com/rufilboss/microservices-deploy/"              
             />
           </Col>
 
@@ -62,7 +63,7 @@ function Projects() {
             <ProjectCard
               imgPath={leaf}
               isBlog={false}
-              title="Plant AI"
+              title="AKS"
               description="."
               ghLink="https://github.com/rufilboss/"
               // demoLink="https://plant49-ai.herokuapp.com/"
