@@ -6,7 +6,7 @@ import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
 import logiq from "../../Assets/Projects/logiq.png";
-import suicide from "../../Assets/Projects/suicide.png";
+import awsbackup from "../../Assets/Projects/awsbackup.png";
 import days100 from "../../Assets/Projects/days100.png";
 
 function Projects() {
@@ -72,7 +72,7 @@ function Projects() {
 
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={suicide}
+              imgPath={awsbackup}
               isBlog={false}
               title="Amazon RDS Backup & Restore Using AWS Backup"
               description=""
