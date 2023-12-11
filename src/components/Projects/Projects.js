@@ -64,7 +64,7 @@ function Projects() {
               imgPath={leaf}
               isBlog={false}
               title="AKS"
-              description="."
+              description="Deploy an AKS cluster for a client on replit"
               ghLink="https://github.com/rufilboss/"
               // demoLink="https://plant49-ai.herokuapp.com/"
             />
@@ -74,10 +74,10 @@ function Projects() {
             <ProjectCard
               imgPath={suicide}
               isBlog={false}
-              title="Ai For Social Good"
+              title="Amazon RDS Backup & Restore Using AWS Backup"
               description=""
-              ghLink="https://github.com/rufilboss/"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
+              ghLink="https://github.com/DevSecOpsHQ/Project-3"
+              demoLink="https://github.com/DevSecOpsHQ/Project-3"
             />
           </Col>
 
