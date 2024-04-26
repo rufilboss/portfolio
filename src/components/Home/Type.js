@@ -9,7 +9,7 @@ function Type() {
           "DevOps Engineer",
           "Technical Writer",
           "Open Source Contributor",
-          // "Aspiring Freelancer",
+          "Backend Engineer => GOLANG",
         ],
         autoStart: true,
         loop: true,
