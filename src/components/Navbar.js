@@ -94,7 +94,7 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="https://rufilboss.hashnode.dev/"
+                href="https://blog.rufilboss.me/"
                 target="_blank"
                 rel="noreferrer"
               >
