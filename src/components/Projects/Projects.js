@@ -65,8 +65,8 @@ function Projects() {
               isBlog={false}
               title="AKS"
               description="Deploy an AKS cluster for a client on replit"
-              ghLink="https://github.com/rufilboss/"
-              // demoLink="https://plant49-ai.herokuapp.com/"
+              ghLink="https://github.com/rufilboss/replit_projects"
+              demoLink="https://github.com/rufilboss/replit_projects"
             />
           </Col>
 
