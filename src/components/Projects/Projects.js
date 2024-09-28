@@ -25,6 +25,17 @@ function Projects() {
             <ProjectCard
               imgPath={logiq}
               isBlog={false}
+              title="Real-Time Log Processing API"
+              description=""
+              ghLink="https://github.com/rufilboss"
+              demoLink=""
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={logiq}
+              isBlog={false}
               title="LogIQ"
               description="LogIQ is an open-source web performance monitoring tool that provides a comprehensive analysis of website performance on both desktop and 
                           mobile devices. With LogIQ, website owners and developers can gain deep insights into their website's performance and take actions to 
