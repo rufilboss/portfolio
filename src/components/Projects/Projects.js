@@ -25,6 +25,20 @@ function Projects() {
             <ProjectCard
               imgPath={logiq}
               isBlog={false}
+              title="Real-Time Log Processing API"
+              description="This project is a Real-Time Log Processing API built with FastAPI, Celery, Redis, and MongoDB. It processes incoming log data asynchronously, 
+              stores them in a MongoDB database, and performs background tasks (e.g., filtering sensitive information) using Celery workers. The infrastructure is containerized 
+              with Docker, making it highly scalable and suitable for real-world applications such as centralized log processing,
+               fraud detection, and asynchronous data processing."
+              ghLink="https://github.com/rufilboss/real-time-log-processing-api"
+              demoLink=""
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={logiq}
+              isBlog={false}
               title="LogIQ"
               description="LogIQ is an open-source web performance monitoring tool that provides a comprehensive analysis of website performance on both desktop and 
                           mobile devices. With LogIQ, website owners and developers can gain deep insights into their website's performance and take actions to 
