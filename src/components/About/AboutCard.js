@@ -42,7 +42,7 @@ function AboutCard() {
               <ImPointRight /> Writing Blogs
             </li>
             <li className="about-activity">
-              <ImPointRight /> Qur'an revision as an Haafidh
+              <ImPointRight /> Listen to podcasts
             </li>
           </ul>
 
