@@ -11,27 +11,25 @@ function AboutCard() {
             Hi Everyone, I am <span className="purple">ILYAS RUFAI </span>
             from <span className="purple">Nigeria.</span>
             <br />
-            A seasoned professional, dedicated to revolutionizing software delivery and infrastructure management for startups and established companies alike. 
-            With a robust skill set and a passion for cutting-edge automation technologies, I stand at the forefront of the DevOps landscape.
+            As a DevOps Engineer, I'm passionate about revolutionizing software delivery and infrastructure management. 
+            Whether working with startups or established companies, I bring a strong focus on cutting-edge automation technologies and efficient systems.
             <br/>
-            Throughout my career, I have been instrumental in implementing and optimizing automation processes using tools such as Git, 
-            Terraform, Jenkins, Docker, Kubernetes, and more. I bring a wealth of experience in scaling and automating the deployment of microservices 
-            within and not limited to Cloud, showcasing my mastery of configuration management, continuous integration, and continuous delivery.
+            Throughout my career, I've been instrumental in implementing and optimizing automation processes using tools such as Git, Terraform, Jenkins, 
+            Docker, and Kubernetes. I have extensive experience in scaling and automating the deployment of microservices on cloud platforms, 
+            mastering configuration management, continuous integration (CI), and continuous delivery (CD).
             <br />
-            I am not content with the status quo; I am committed to staying ahead of the curve by continually exploring and adopting new automation technologies. 
-            This drive to learn and evolve positions me as a dynamic force in the ever-evolving field of DevOps. 
-            Beyond technical expertise, I am fueled by a genuine passion for IT automation, scalable and resilient applications, system design, 
-            software architecture, and cybersecurity. This holistic approach sets me apart, making me not just a technical expert but a well-rounded 
-            professional with a keen eye for creating efficient, secure, and innovative solutions.
+            I'm always looking ahead, constantly learning and adapting to new automation technologies. My holistic approach covers not just 
+            technical know-how but also a passion for IT automation, system design, scalable and resilient applications, software architecture, 
+            cybersecurity, and distributed systems.
             <br />
-            Currently working as a DevOps Engineer at Aladdin Digital, I aspire to contribute my skills and knowledge to a technology company. 
-            I seek to take on challenging projects that push the boundaries of innovation and am eager to collaborate with like-minded individuals 
-            who share my commitment to excellence and a relentless pursuit of groundbreaking solutions.
+            Having recently worked as a DevOps Engineer at Aladdin Digital, I’m now seeking new opportunities where I can apply my skills and 
+            knowledge to exciting, challenging projects. I thrive on collaborating with teams to push the boundaries of innovation, making a 
+            meaningful impact through groundbreaking solutions.
             <br/>
-            In the dynamic world of DevOps, <span className="purple">ILYAS RUFAI</span> emerges as a standout candidate, ready to bring my expertise, passion, 
-            and innovation to the forefront of any technological endeavor.
+            In the ever-evolving world of DevOps, I'm ready to bring my expertise, passion, and innovation to any technological endeavor.
             <br />
-            Lastly, I'm an undergraduate student of <span className="purple">University Of Ilorin, Nigeria.</span>
+            Lastly, I'm an undergraduate engineering student of <span className="purple">University Of Ilorin, Nigeria,</span>
+            currently exploring deeper into <span className="purple">system design</span> and distributed systems.
             <br/>
             <br />
             Apart from coding, some other activities that I love to do!
