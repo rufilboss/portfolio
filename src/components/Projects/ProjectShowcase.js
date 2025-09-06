@@ -2,66 +2,105 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const ProjectShowcase = () => {
-  const [activeProject, setActiveProject] = useState(0);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const projects = [
     {
-      id: 0,
+      id: 1,
       category: 'DevOps',
       title: 'Infrastructure Automation Platform',
       description: 'Automated deployment pipeline using Terraform, Docker, and Kubernetes for scalable cloud infrastructure. Features CI/CD integration, monitoring, and auto-scaling capabilities.',
       techStack: ['Terraform', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Prometheus'],
       status: 'completed',
-      demoUrl: 'https://demo.example.com',
-      codeUrl: 'https://github.com/ilyasrufai/infrastructure-automation'
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/infrastructure-automation',
+      liveUrl: 'https://infra-demo.example.com',
+      featured: true
     },
     {
-      id: 1,
+      id: 2,
       category: 'Research',
       title: 'Smart Agricultural IoT System',
       description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis. Includes mobile app and web dashboard.',
       techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React', 'Node.js'],
       status: 'in-development',
-      demoUrl: 'https://agri-iot-demo.example.com',
-      codeUrl: 'https://github.com/ilyasrufai/smart-agriculture-iot'
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/smart-agriculture-iot',
+      liveUrl: 'https://agri-iot-demo.example.com',
+      featured: true
     },
     {
-      id: 2,
+      id: 3,
       category: 'Web Development',
       title: 'Engineering Blog Platform',
       description: 'Full-stack blog platform for sharing engineering insights and research findings. Features content management, user authentication, and analytics.',
       techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'Stripe'],
       status: 'completed',
-      demoUrl: 'https://engineering-blog.example.com',
-      codeUrl: 'https://github.com/ilyasrufai/engineering-blog'
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/engineering-blog',
+      liveUrl: 'https://engineering-blog.example.com',
+      featured: false
     },
     {
-      id: 3,
+      id: 4,
       category: 'Research',
       title: 'Civil Engineering Data Analytics',
       description: 'Data analysis platform for civil engineering projects, featuring predictive modeling for infrastructure maintenance and optimization.',
       techStack: ['Python', 'Pandas', 'Scikit-learn', 'D3.js', 'PostgreSQL'],
       status: 'in-development',
-      demoUrl: 'https://civil-analytics-demo.example.com',
-      codeUrl: 'https://github.com/ilyasrufai/civil-engineering-analytics'
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/civil-engineering-analytics',
+      liveUrl: 'https://civil-analytics-demo.example.com',
+      featured: false
+    },
+    {
+      id: 5,
+      category: 'DevOps',
+      title: 'Microservices Monitoring Dashboard',
+      description: 'Real-time monitoring dashboard for microservices architecture with alerting, logging, and performance metrics visualization.',
+      techStack: ['Grafana', 'Prometheus', 'ELK Stack', 'Docker', 'Kubernetes'],
+      status: 'completed',
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/microservices-monitoring',
+      liveUrl: 'https://monitoring-demo.example.com',
+      featured: true
+    },
+    {
+      id: 6,
+      category: 'Web Development',
+      title: 'Agricultural Data Visualization',
+      description: 'Interactive data visualization platform for agricultural research data with real-time charts and predictive analytics.',
+      techStack: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
+      status: 'completed',
+      screenshot: '/api/placeholder/600/400',
+      githubUrl: 'https://github.com/ilyasrufai/agri-data-viz',
+      liveUrl: 'https://agri-viz.example.com',
+      featured: false
     }
   ];
 
-  const handleProjectClick = (projectId) => {
-    setActiveProject(projectId);
+  const categories = [
+    { id: 'all', label: 'All Projects' },
+    { id: 'DevOps', label: 'DevOps' },
+    { id: 'Research', label: 'Research' },
+    { id: 'Web Development', label: 'Web Development' }
+  ];
+
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
+
+  const handleFilterClick = (categoryId) => {
+    setActiveFilter(categoryId);
   };
 
-  const handleDemoClick = (url) => {
-    // For demo purposes, show an alert. In a real app, this would open the demo
-    alert('This would open the live demo at: ' + url);
+  const handleGitHubClick = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const handleCodeClick = (url) => {
-    // For demo purposes, show an alert. In a real app, this would open the GitHub repo
-    alert('This would open the GitHub repository at: ' + url);
+  const handleLiveClick = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
-
-  const currentProject = projects[activeProject];
 
   return (
     <section id="projects" className="project-showcase-section">
@@ -74,88 +113,111 @@ const ProjectShowcase = () => {
         </div>
 
         <div className="project-navigation">
-          {projects.map((project) => (
+          {categories.map((category) => (
             <button
-              key={project.id}
-              className={`nav-btn ${activeProject === project.id ? 'active' : ''}`}
-              onClick={() => handleProjectClick(project.id)}
+              key={category.id}
+              className={`nav-btn ${activeFilter === category.id ? 'active' : ''}`}
+              onClick={() => handleFilterClick(category.id)}
             >
-              {project.category}
+              {category.label}
             </button>
           ))}
         </div>
 
-        <Row className="project-details">
-          <Col lg={6} className="project-info">
-            <div className="project-category">{currentProject.category}</div>
-            <h3 className="project-title">{currentProject.title}</h3>
-            <p className="project-description">{currentProject.description}</p>
-            
-            <div className="tech-stack">
-              <h4>Tech Stack</h4>
-              <div className="tech-tags">
-                {currentProject.techStack.map((tech, index) => (
-                  <span key={index} className="tech-tag">{tech}</span>
-                ))}
-              </div>
-            </div>
-
-            <div className={`status-badge ${currentProject.status}`}>
-              {currentProject.status === 'completed' ? 'Completed' : 'In Development'}
-            </div>
-
-            <div className="project-actions">
-              <button 
-                className="btn-primary"
-                onClick={() => handleDemoClick(currentProject.demoUrl)}
-              >
-                Live Demo
-              </button>
-              <button 
-                className="btn-secondary"
-                onClick={() => handleCodeClick(currentProject.codeUrl)}
-              >
-                View Code
-              </button>
-            </div>
-          </Col>
-
-          <Col lg={6} className="project-visual">
-            <div className="project-mockup">
-              <div className="mockup-header">
-                <div className="mockup-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
+        <Row>
+          {filteredProjects.map((project) => (
+            <Col key={project.id} lg={6} className="mb-4">
+              <div className={`project-card ${project.featured ? 'featured' : ''}`}>
+                <div className="project-image-container">
+                  <img 
+                    src={project.screenshot} 
+                    alt={project.title}
+                    className="project-screenshot"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="project-placeholder">
+                    <div className="placeholder-icon">💻</div>
+                    <div className="placeholder-text">{project.category}</div>
+                  </div>
+                  <div className="project-overlay">
+                    <div className="project-status">
+                      <span className={`status-badge ${project.status}`}>
+                        {project.status === 'completed' ? 'Completed' : 'In Development'}
+                      </span>
+                    </div>
+                    {project.featured && (
+                      <div className="featured-badge">
+                        <span>⭐ Featured</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="mockup-content">
-                <div className="code-preview">
-                  <div className="code-line">
-                    <span className="code-keyword">const</span> 
-                    <span className="code-function"> {currentProject.category.toLowerCase()}</span> 
-                    <span className="code-bracket"> = </span>
-                    <span className="code-string">'{currentProject.title}'</span>
+
+                <div className="project-content">
+                  <div className="project-category">{project.category}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="tech-stack">
+                    <h4>Tech Stack</h4>
+                    <div className="tech-tags">
+                      {project.techStack.map((tech, index) => (
+                        <span key={index} className="tech-tag">{tech}</span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="code-line">
-                    <span className="code-keyword">console</span>
-                    <span className="code-bracket">.</span>
-                    <span className="code-function">log</span>
-                    <span className="code-bracket">(</span>
-                    <span className="code-string">'Building the future'</span>
-                    <span className="code-bracket">)</span>
-                  </div>
-                  <div className="code-line">
-                    <span className="code-keyword">const</span>
-                    <span className="code-function"> status</span>
-                    <span className="code-bracket"> = </span>
-                    <span className="code-string">'{currentProject.status}'</span>
+
+                  <div className="project-actions">
+                    <button 
+                      className="btn-primary"
+                      onClick={() => handleLiveClick(project.liveUrl)}
+                    >
+                      <span>🌐</span> Live Demo
+                    </button>
+                    <button 
+                      className="btn-secondary"
+                      onClick={() => handleGitHubClick(project.githubUrl)}
+                    >
+                      <span>💻</span> Source Code
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
+
+        <div className="project-stats text-center">
+          <Row>
+            <Col md={3}>
+              <div className="stat-item">
+                <span className="stat-number">{projects.length}</span>
+                <span className="stat-label">Total Projects</span>
+              </div>
+            </Col>
+            <Col md={3}>
+              <div className="stat-item">
+                <span className="stat-number">{projects.filter(p => p.status === 'completed').length}</span>
+                <span className="stat-label">Completed</span>
+              </div>
+            </Col>
+            <Col md={3}>
+              <div className="stat-item">
+                <span className="stat-number">{projects.filter(p => p.featured).length}</span>
+                <span className="stat-label">Featured</span>
+              </div>
+            </Col>
+            <Col md={3}>
+              <div className="stat-item">
+                <span className="stat-number">{projects.filter(p => p.status === 'in-development').length}</span>
+                <span className="stat-label">In Development</span>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </Container>
     </section>
   );
