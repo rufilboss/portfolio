@@ -1,51 +1,69 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../Particle";
-import Github from "./Github";
+import AboutCard from "./AboutCard";
+import avatar from "../../Assets/avatar.svg";
 import Techstack from "./Techstack";
-import Aboutcard from "./AboutCard";
-import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import Github from "./Github";
 
 function About() {
   return (
-    <Container fluid className="about-section">
-      <Particle />
+    <Container fluid className="section" id="about">
       <Container>
-        <Row style={{ justifyContent: "center", padding: "10px" }}>
-          <Col
-            md={7}
-            style={{
-              justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
-            }}
-          >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Meet <strong className="purple">ME</strong>
-            </h1>
-            <Aboutcard />
+        <div className="section-header">
+          <h2 className="section-title">About Me</h2>
+          <p className="section-subtitle">
+            A passionate engineering student and software engineer dedicated to research, innovation, and creating meaningful solutions.
+          </p>
+        </div>
+        
+        <Row className="align-items-center mb-5">
+          <Col md={6}>
+            <AboutCard />
           </Col>
-          <Col
-            md={5}
-            style={{ paddingTop: "120px", paddingBottom: "50px" }}
-            className="about-img"
-          >
-            <img src={laptopImg} alt="about" className="img-fluid" />
+          <Col md={6} className="text-center">
+            <img 
+              src={avatar} 
+              alt="Ilyas Rufai" 
+              className="img-fluid"
+              style={{ 
+                maxWidth: '400px',
+                borderRadius: '20px',
+                boxShadow: 'var(--shadow-lg)'
+              }}
+            />
           </Col>
         </Row>
-        <h1 className="project-heading">
-          Professional <strong className="purple">Skillset </strong>
-        </h1>
 
-        <Techstack />
+        <Row>
+          <Col md={12}>
+            <div className="section-header">
+              <h3 className="section-title">Technical Skills</h3>
+              <p className="section-subtitle">
+                Technologies and tools I work with to bring ideas to life.
+              </p>
+            </div>
+            <Techstack />
+          </Col>
+        </Row>
 
-        <h1 className="project-heading">
-          <strong className="purple">Tools</strong> I use
-        </h1>
-        <Toolstack />
+        <Row>
+          <Col md={12}>
+            <div className="section-header">
+              <h3 className="section-title">Development Tools</h3>
+              <p className="section-subtitle">
+                Tools and platforms that enhance my development workflow.
+              </p>
+            </div>
+            <Toolstack />
+          </Col>
+        </Row>
 
-        <Github />
+        <Row>
+          <Col md={12}>
+            <Github />
+          </Col>
+        </Row>
       </Container>
     </Container>
   );

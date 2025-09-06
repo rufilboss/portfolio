@@ -1,47 +1,59 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/home-main.svg";
-import Particle from "../Particle";
-import Home2 from "./Home2";
+import avatar from "../../Assets/avatar.svg";
 import Type from "./Type";
 
 function Home() {
   return (
-    <section>
-      <Container fluid className="home-section" id="home">
-        <Particle />
-        <Container className="home-content">
-          <Row>
-            <Col md={7} className="home-header">
-              <h1 style={{ paddingBottom: 15 }} className="heading">
-                Hi There!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
-                </span>
+    <section className="hero" id="home">
+      <Container fluid>
+        <Row className="align-items-center" style={{ minHeight: '100vh', paddingTop: '80px' }}>
+          <Col md={6} className="text-center text-md-start">
+            <div style={{ padding: '2rem' }}>
+              <h1 className="hero-title">
+                Hi, I'm <span style={{ color: 'var(--primary-navy)' }}>Ilyas Rufai</span>
               </h1>
-
-              <h1 className="heading-name">
-                I'M
-                <strong className="main-name"> ILYAS RUFAI</strong>
-              </h1>
-
-              <div style={{ padding: 50, textAlign: "left" }}>
-                <Type />
+              <h2 className="hero-subtitle">
+                Engineering Student & Software Engineer
+              </h2>
+              <p className="hero-description">
+                Passionate about research, innovation, and building solutions that make a difference. 
+                Currently pursuing my engineering degree while contributing to cutting-edge research 
+                and developing impactful software solutions.
+              </p>
+              <div className="hero-cta">
+                <a href="#about" className="btn btn-primary">
+                  Learn More About Me
+                </a>
+                <a href="#projects" className="btn btn-secondary">
+                  View My Work
+                </a>
               </div>
-            </Col>
-
-            <Col md={5} style={{ paddingBottom: 20 }}>
+            </div>
+          </Col>
+          <Col md={6} className="text-center">
+            <div style={{ padding: '2rem' }}>
               <img
-                src={homeLogo}
-                alt="home pic"
+                src={avatar}
+                alt="Ilyas Rufai - Engineering Student & Software Engineer"
                 className="img-fluid"
-                style={{ maxHeight: "450px" }}
+                style={{ 
+                  maxWidth: '400px', 
+                  borderRadius: '20px',
+                  boxShadow: 'var(--shadow-lg)'
+                }}
               />
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} className="text-center">
+            <div style={{ padding: '2rem' }}>
+              <Type />
+            </div>
+          </Col>
+        </Row>
       </Container>
-      <Home2 />
     </section>
   );
 }
