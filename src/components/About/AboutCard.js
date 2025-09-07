@@ -21,7 +21,7 @@ function AboutCard() {
             As a software engineer, I specialize in building robust, scalable solutions using modern technologies. 
             My expertise spans across <span style={{ color: 'var(--primary-navy)', fontWeight: '600' }}>full-stack development, 
             DevOps practices, and system architecture</span>. I'm particularly passionate about creating software 
-            that bridges the gap between research and practical applications.
+            that solves real world engineering problems and bridges the gap between research and practical applications.
             <br />
             <br />
             I maintain an active blog where I share insights on software engineering, research methodologies, 

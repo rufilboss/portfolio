@@ -29,9 +29,9 @@ const AcademicJourney = () => {
 
   const skills = [
     { name: 'DevOps & Infrastructure', percentage: 85 },
-    { name: 'Agricultural Engineering', percentage: 80 },
-    { name: 'Research & Analysis', percentage: 75 },
-    { name: 'Software Development', percentage: 90 },
+    { name: 'Agricultural Engineering', percentage: 50 },
+    { name: 'Research & Analysis', percentage: 40 },
+    { name: 'Software Development', percentage: 60 },
     { name: 'IoT & Automation', percentage: 70 },
     { name: 'Project Management', percentage: 65 }
   ];
@@ -89,16 +89,16 @@ const AcademicJourney = () => {
                 <h4>Academic Highlights</h4>
                 <div className="highlights-grid">
                   <div className="highlight-item">
-                    <span className="highlight-number">2+</span>
+                    <span className="highlight-number">5+</span>
                     <span className="highlight-label">Research Labs</span>
                   </div>
                   <div className="highlight-item">
-                    <span className="highlight-number">5+</span>
+                    <span className="highlight-number">2+</span>
                     <span className="highlight-label">Publications</span>
                   </div>
                   <div className="highlight-item">
-                    <span className="highlight-number">3.8</span>
-                    <span className="highlight-label">GPA</span>
+                    <span className="highlight-number">300</span>
+                    <span className="highlight-label">Level</span>
                   </div>
                   <div className="highlight-item">
                     <span className="highlight-number">10+</span>

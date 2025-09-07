@@ -7,7 +7,7 @@ const Hero = () => {
   
   const roles = [
     'Agricultural & Biosystems Engineering Student',
-    'Civil Engineering Researcher',
+    'Student Engineering Researcher',
     'DevOps Engineer',
     'Software Engineer',
     'Future Lab Collaborator'
@@ -37,7 +37,7 @@ const Hero = () => {
             <p className="hero-description">
               Passionate about bridging the gap between agricultural engineering and technology. 
               Currently pursuing Agricultural & Biosystems Engineering while actively contributing 
-              to civil engineering research. Exploring multiple research labs to expand my 
+              to different engineering research in my school. Exploring multiple research labs to expand my 
               interdisciplinary knowledge and make meaningful contributions to sustainable engineering solutions.
             </p>
             

@@ -4,21 +4,21 @@ import { Container, Row, Col } from 'react-bootstrap';
 const NetworkShowcase = () => {
   const connections = [
     {
-      name: 'Dr. Sarah Johnson',
+      name: 'Engr. Yusuf',
       role: 'Research Supervisor',
       institution: 'Civil Engineering Lab',
       field: 'Smart Infrastructure',
       type: 'Academic'
     },
     {
-      name: 'Michael Chen',
+      name: 'Yusuf Adeyemo',
       role: 'Senior DevOps Engineer',
-      institution: 'TechCorp Solutions',
+      institution: 'Pronto Ville',
       field: 'Cloud Infrastructure',
       type: 'Professional'
     },
     {
-      name: 'Dr. Maria Rodriguez',
+      name: 'Prof. K O Yusuf',
       role: 'Agricultural Technology Expert',
       institution: 'AgriTech Research Center',
       field: 'Precision Agriculture',
@@ -94,16 +94,16 @@ const NetworkShowcase = () => {
             <div className="social-presence">
               <h4>Connect With Me</h4>
               <div className="social-links">
-                <a href="https://linkedin.com/in/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                   <span>💼</span> LinkedIn
                 </a>
-                <a href="https://github.com/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                   <span>💻</span> GitHub
                 </a>
-                <a href="https://twitter.com/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://twitter.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                   <span>🐦</span> Twitter
                 </a>
-                <a href="mailto:ilyas@example.com" className="social-link">
+                <a href="mailto:rufilboss@gmail.com" className="social-link">
                   <span>📧</span> Email
                 </a>
               </div>
@@ -115,7 +115,7 @@ const NetworkShowcase = () => {
           <Row>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">50+</span>
+                <span className="stat-number">100+</span>
                 <span className="stat-label">Professional Connections</span>
               </div>
             </Col>
@@ -133,7 +133,7 @@ const NetworkShowcase = () => {
             </Col>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">100+</span>
+                <span className="stat-number">15k+</span>
                 <span className="stat-label">Network Reach</span>
               </div>
             </Col>

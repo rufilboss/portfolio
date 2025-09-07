@@ -50,7 +50,7 @@ const Contact = () => {
                   <div className="contact-icon">📧</div>
                   <div className="contact-text">
                     <h4>Email</h4>
-                    <p>ilyas.rufai@example.com</p>
+                    <p>rufilboss@gmail.com</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -72,16 +72,16 @@ const Contact = () => {
               <div className="social-links">
                 <h4>Connect on Social Media</h4>
                 <div className="social-icons">
-                  <a href="https://linkedin.com/in/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com/in/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                     💼
                   </a>
-                  <a href="https://github.com/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                     💻
                   </a>
-                  <a href="https://twitter.com/ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <a href="https://twitter.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
                     🐦
                   </a>
-                  <a href="https://medium.com/@ilyasrufai" className="social-link" target="_blank" rel="noopener noreferrer">
+                  <a href="https://rufilboss.substack.com" className="social-link" target="_blank" rel="noopener noreferrer">
                     📝
                   </a>
                 </div>

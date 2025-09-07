@@ -13,7 +13,7 @@ const ProjectShowcase = () => {
       techStack: ['Terraform', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Prometheus'],
       status: 'completed',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/infrastructure-automation',
+      githubUrl: 'https://github.com/rufilboss/infrastructure-automation',
       liveUrl: 'https://infra-demo.example.com',
       featured: true
     },
@@ -25,7 +25,7 @@ const ProjectShowcase = () => {
       techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React', 'Node.js'],
       status: 'in-development',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/smart-agriculture-iot',
+      githubUrl: 'https://github.com/rufilboss/smart-agriculture-iot',
       liveUrl: 'https://agri-iot-demo.example.com',
       featured: true
     },
@@ -37,7 +37,7 @@ const ProjectShowcase = () => {
       techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'Stripe'],
       status: 'completed',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/engineering-blog',
+      githubUrl: 'https://github.com/rufilboss/engineering-blog',
       liveUrl: 'https://engineering-blog.example.com',
       featured: false
     },
@@ -49,7 +49,7 @@ const ProjectShowcase = () => {
       techStack: ['Python', 'Pandas', 'Scikit-learn', 'D3.js', 'PostgreSQL'],
       status: 'in-development',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/civil-engineering-analytics',
+      githubUrl: 'https://github.com/rufilboss/civil-engineering-analytics',
       liveUrl: 'https://civil-analytics-demo.example.com',
       featured: false
     },
@@ -61,7 +61,7 @@ const ProjectShowcase = () => {
       techStack: ['Grafana', 'Prometheus', 'ELK Stack', 'Docker', 'Kubernetes'],
       status: 'completed',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/microservices-monitoring',
+      githubUrl: 'https://github.com/rufilboss/microservices-monitoring',
       liveUrl: 'https://monitoring-demo.example.com',
       featured: true
     },
@@ -73,7 +73,7 @@ const ProjectShowcase = () => {
       techStack: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
       status: 'completed',
       screenshot: '/api/placeholder/600/400',
-      githubUrl: 'https://github.com/ilyasrufai/agri-data-viz',
+      githubUrl: 'https://github.com/rufilboss/agri-data-viz',
       liveUrl: 'https://agri-viz.example.com',
       featured: false
     }
