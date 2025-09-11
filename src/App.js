@@ -3,6 +3,7 @@ import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero/Hero";
 import ResearchTimeline from "./components/Research/ResearchTimeline";
+import About from "./components/About/About";
 import ProjectShowcase from "./components/Projects/ProjectShowcase";
 import PublicationGallery from "./components/Publications/PublicationGallery";
 import AcademicJourney from "./components/Academic/AcademicJourney";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
+              <About />
               <ResearchTimeline />
               <ProjectShowcase />
               <PublicationGallery />

@@ -32,7 +32,7 @@ const AcademicJourney = () => {
     { name: 'Agricultural Engineering', percentage: 50 },
     { name: 'Research & Analysis', percentage: 40 },
     { name: 'Software Development', percentage: 60 },
-    { name: 'IoT & Automation', percentage: 70 },
+    { name: 'IoT & Automation', percentage: 50 },
     { name: 'Project Management', percentage: 65 }
   ];
 

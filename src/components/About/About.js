@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Badge } from "react-bootstrap";
 import { 
   FaGraduationCap, 
   FaCode, 
-  FaResearch, 
+  FaFlask, 
   FaBlog, 
   FaHeart,
   FaQuoteLeft,
@@ -46,12 +46,12 @@ function About() {
     { id: 'story', label: 'My Story', icon: FaHeart },
     { id: 'academic', label: 'Academic Journey', icon: FaGraduationCap },
     { id: 'engineering', label: 'Software Engineering', icon: FaCode },
-    { id: 'research', label: 'Research & Publications', icon: FaResearch }
+    { id: 'research', label: 'Research & Publications', icon: FaFlask }
   ];
 
   const achievements = [
     { icon: FaUniversity, text: "Engineering Student at University of Ilorin", color: "#3B82F6" },
-    { icon: FaResearch, text: "Research Lab Member", color: "#10B981" },
+    { icon: FaFlask, text: "Research Lab Member", color: "#10B981" },
     { icon: FaBlog, text: "Technical Writer & Blogger", color: "#F59E0B" },
     { icon: FaCode, text: "Full-Stack Developer", color: "#8B5CF6" },
     { icon: FaUsers, text: "Community Mentor", color: "#EF4444" },
@@ -211,7 +211,7 @@ function About() {
                 
                 <div className="research-card">
                   <div className="research-icon">
-                    <FaResearch />
+                    <FaFlask />
                   </div>
                   <h4>Research Papers</h4>
                   <p>Working on upcoming publications in engineering research, focusing on innovative solutions and methodologies.</p>

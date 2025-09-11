@@ -1997,3 +1997,87 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.1rem;
   }
 }
+
+/* Floating Scroll FABs */
+.scroll-fab {
+  position: fixed;
+  right: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-gold);
+  color: var(--primary-navy);
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.scroll-fab:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.25);} 
+.scroll-top { bottom: 84px; }
+.scroll-bottom { bottom: 24px; }
+@media (max-width: 768px) {
+  .scroll-fab { right: 14px; width: 42px; height: 42px; }
+  .scroll-top { bottom: 78px; }
+  .scroll-bottom { bottom: 18px; }
+}
+
+
+/* High-contrast overrides for dark sections only */
+#about, #projects, #academic, #contact {
+  color: #ffffff !important;
+}
+
+#about h1, #about h2, #about h3, #about h4, #about h5, #about h6,
+#projects h1, #projects h2, #projects h3, #projects h4, #projects h5, #projects h6,
+#academic h1, #academic h2, #academic h3, #academic h4, #academic h5, #academic h6,
+#contact h1, #contact h2, #contact h3, #contact h4, #contact h5, #contact h6 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+#about p, #about span, #about li,
+#projects p, #projects span, #projects li,
+#academic p, #academic span, #academic li,
+#contact p, #contact span, #contact li {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* Buttons, badges, and meta text within dark sections */
+#about .btn, #projects .btn, #academic .btn, #contact .btn {
+  color: #0b132b !important;
+  background: #ffd166 !important;
+  border-color: #ffd166 !important;
+}
+
+#about .badge, #projects .badge, #academic .badge, #contact .badge,
+#about .tag, #projects .tag, #academic .tag, #contact .tag,
+#about .muted, #projects .muted, #academic .muted, #contact .muted {
+  color: #ffffff !important;
+}
+
+/* Card surfaces inside dark sections should remain legible */
+#about .card, #projects .card, #academic .card, #contact .card {
+  background: rgba(255,255,255,0.06) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #ffffff !important;
+}
+
+#about .card-title, #projects .card-title, #academic .card-title, #contact .card-title {
+  color: #ffffff !important;
+}
+
+#about .card-text, #projects .card-text, #academic .card-text, #contact .card-text {
+  color: rgba(255,255,255,0.92) !important;
+}
+
+/* Ensure links are readable in dark sections */
+#about a, #projects a, #academic a, #contact a {
+  color: #8ecae6 !important;
+}
+#about a:hover, #projects a:hover, #academic a:hover, #contact a:hover {
+  color: #bde0fe !important;
+}
