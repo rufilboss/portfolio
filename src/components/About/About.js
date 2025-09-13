@@ -170,6 +170,16 @@ function About() {
                     <Badge>Cloud Solutions</Badge>
                   </div>
                 </div>
+                
+                <div className="skill-category">
+                  <h4>AI/ML Engineering</h4>
+                  <div className="skill-tags">
+                    <Badge>TensorFlow</Badge>
+                    <Badge>PyTorch</Badge>
+                    <Badge>Scikit-learn</Badge>
+                    <Badge>MLOps</Badge>
+                  </div>
+                </div>
               </div>
               
               <div className="engineering-philosophy">

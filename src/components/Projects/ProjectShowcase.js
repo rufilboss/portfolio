@@ -4,15 +4,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 const ProjectShowcase = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const projects = [
+      const projects = [
     {
       id: 1,
       category: 'DevOps',
       title: 'Infrastructure Automation Platform',
-      description: 'Automated deployment pipeline using Terraform, Docker, and Kubernetes for scalable cloud infrastructure. Features CI/CD integration, monitoring, and auto-scaling capabilities.',
-      techStack: ['Terraform', 'Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Prometheus'],
+      description: 'Automated deployment pipeline using Terraform, Docker, and Kubernetes for scalable cloud infrastructure.',
+      techStack: ['Terraform', 'Docker', 'Kubernetes', 'AWS', 'Jenkins'],
       status: 'completed',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/infrastructure-automation',
       liveUrl: 'https://infra-demo.example.com',
       featured: true
@@ -21,10 +21,10 @@ const ProjectShowcase = () => {
       id: 2,
       category: 'Research',
       title: 'Smart Agricultural IoT System',
-      description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis. Includes mobile app and web dashboard.',
-      techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React', 'Node.js'],
+      description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis.',
+      techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React'],
       status: 'in-development',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/smart-agriculture-iot',
       liveUrl: 'https://agri-iot-demo.example.com',
       featured: true
@@ -33,10 +33,10 @@ const ProjectShowcase = () => {
       id: 3,
       category: 'Web Development',
       title: 'Engineering Blog Platform',
-      description: 'Full-stack blog platform for sharing engineering insights and research findings. Features content management, user authentication, and analytics.',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT', 'Stripe'],
+      description: 'Full-stack blog platform for sharing engineering insights and research findings.',
+      techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
       status: 'completed',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/engineering-blog',
       liveUrl: 'https://engineering-blog.example.com',
       featured: false
@@ -45,10 +45,10 @@ const ProjectShowcase = () => {
       id: 4,
       category: 'Research',
       title: 'Civil Engineering Data Analytics',
-      description: 'Data analysis platform for civil engineering projects, featuring predictive modeling for infrastructure maintenance and optimization.',
+      description: 'Data analysis platform for civil engineering projects with predictive modeling.',
       techStack: ['Python', 'Pandas', 'Scikit-learn', 'D3.js', 'PostgreSQL'],
       status: 'in-development',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/civil-engineering-analytics',
       liveUrl: 'https://civil-analytics-demo.example.com',
       featured: false
@@ -57,10 +57,10 @@ const ProjectShowcase = () => {
       id: 5,
       category: 'DevOps',
       title: 'Microservices Monitoring Dashboard',
-      description: 'Real-time monitoring dashboard for microservices architecture with alerting, logging, and performance metrics visualization.',
+      description: 'Real-time monitoring dashboard for microservices architecture with alerting.',
       techStack: ['Grafana', 'Prometheus', 'ELK Stack', 'Docker', 'Kubernetes'],
       status: 'completed',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/microservices-monitoring',
       liveUrl: 'https://monitoring-demo.example.com',
       featured: true
@@ -69,17 +69,17 @@ const ProjectShowcase = () => {
       id: 6,
       category: 'Web Development',
       title: 'Agricultural Data Visualization',
-      description: 'Interactive data visualization platform for agricultural research data with real-time charts and predictive analytics.',
+      description: 'Interactive data visualization platform for agricultural research data.',
       techStack: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
       status: 'completed',
-      screenshot: '/api/placeholder/600/400',
+      screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/agri-data-viz',
       liveUrl: 'https://agri-viz.example.com',
       featured: false
     }
   ];
 
-  const categories = [
+      const categories = [
     { id: 'all', label: 'All Projects' },
     { id: 'DevOps', label: 'DevOps' },
     { id: 'Research', label: 'Research' },
