@@ -2081,3 +2081,83 @@ h1, h2, h3, h4, h5, h6 {
 #about a:hover, #projects a:hover, #academic a:hover, #contact a:hover {
   color: #bde0fe !important;
 }
+
+
+/* Restore classic white cards inside dark sections for readability */
+#about .card, #projects .card, #academic .card, #contact .card {
+  background: #ffffff !important;
+  color: #0b132b !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+}
+#about .card-title, #projects .card-title, #academic .card-title, #contact .card-title {
+  color: #0b132b !important;
+}
+#about .card-text, #projects .card-text, #academic .card-text, #contact .card-text {
+  color: rgba(11,19,43,0.85) !important;
+}
+#about .card a, #projects .card a, #academic .card a, #contact .card a {
+  color: #1d4ed8 !important;
+}
+#about .card a:hover, #projects .card a:hover, #academic .card a:hover, #contact .card a:hover {
+  color: #0b63f3 !important;
+}
+
+
+/* Improve visibility of scroll FABs on all backgrounds */
+.scroll-fab {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+}
+
+
+/* Ensure card content in dark sections uses dark text for readability */
+#about .card h1, #about .card h2, #about .card h3, #about .card h4, #about .card h5, #about .card h6,
+#projects .card h1, #projects .card h2, #projects .card h3, #projects .card h4, #projects .card h5, #projects .card h6,
+#academic .card h1, #academic .card h2, #academic .card h3, #academic .card h4, #academic .card h5, #academic .card h6,
+#contact .card h1, #contact .card h2, #contact .card h3, #contact .card h4, #contact .card h5, #contact .card h6,
+#about .card p, #projects .card p, #academic .card p, #contact .card p,
+#about .card span, #projects .card span, #academic .card span, #contact .card span,
+#about .card li, #projects .card li, #academic .card li, #contact .card li,
+#about .card small, #projects .card small, #academic .card small, #contact .card small,
+#about .card .text-muted, #projects .card .text-muted, #academic .card .text-muted, #contact .card .text-muted {
+  color: #0b132b !important;
+}
+
+/* Links inside cards */
+#about .card a, #projects .card a, #academic .card a, #contact .card a { color: #1d4ed8 !important; }
+#about .card a:hover, #projects .card a:hover, #academic .card a:hover, #contact .card a:hover { color: #0b63f3 !important; }
+
+
+/* Exempt light-surface containers inside dark sections from white text override */
+#about .profile-card, #about .profile-card *,
+#academic .skills-section, #academic .skills-section *,
+#projects .project-card, #projects .project-card *,
+#projects .project-content, #projects .project-content *,
+#contact .contact-form-container, #contact .contact-form-container *,
+#contact .availability-card, #contact .availability-card * {
+  color: var(--text-primary) !important;
+}
+
+#projects .project-card { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.08) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important; border-radius: 16px !important; }
+#projects .project-description { color: var(--text-secondary) !important; }
+#projects .project-title { color: var(--text-primary) !important; }
+#academic .skills-section { background: var(--white) !important; border: 1px solid var(--gray-200) !important; box-shadow: var(--shadow-sm) !important; }
+#contact .contact-form-container { background: var(--white) !important; border: 1px solid var(--gray-200) !important; box-shadow: var(--shadow-sm) !important; }
+#contact .availability-card { background: var(--white) !important; }
+
+
+/* Exempt About section tab content and quote card from white text override */
+#about .tab-content, #about .tab-content *,
+#about .quote-card, #about .quote-card * {
+  color: var(--text-primary) !important;
+}
+
+#about .tab-content { background: rgba(255, 255, 255, 0.95) !important; }
+#about .quote-card { background: var(--white) !important; }
+#about .content-title { color: var(--primary-navy) !important; }
+#about .lead-text { color: var(--text-secondary) !important; }
+#about .story-card h4 { color: var(--primary-navy) !important; }
+#about .story-card p { color: var(--text-secondary) !important; }
+
