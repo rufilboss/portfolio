@@ -2143,21 +2143,129 @@ h1, h2, h3, h4, h5, h6 {
 #projects .project-card { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.08) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important; border-radius: 16px !important; }
 #projects .project-description { color: var(--text-secondary) !important; }
 #projects .project-title { color: var(--text-primary) !important; }
-#academic .skills-section { background: var(--white) !important; border: 1px solid var(--gray-200) !important; box-shadow: var(--shadow-sm) !important; }
+
 #contact .contact-form-container { background: var(--white) !important; border: 1px solid var(--gray-200) !important; box-shadow: var(--shadow-sm) !important; }
 #contact .availability-card { background: var(--white) !important; }
 
 
 /* Exempt About section tab content and quote card from white text override */
-#about .tab-content, #about .tab-content *,
-#about .quote-card, #about .quote-card * {
+#about .tab-content, #about .tab-content * {
   color: var(--text-primary) !important;
 }
 
 #about .tab-content { background: rgba(255, 255, 255, 0.95) !important; }
-#about .quote-card { background: var(--white) !important; }
+
 #about .content-title { color: var(--primary-navy) !important; }
 #about .lead-text { color: var(--text-secondary) !important; }
 #about .story-card h4 { color: var(--primary-navy) !important; }
 #about .story-card p { color: var(--text-secondary) !important; }
+
+
+/* Story Narrative Styles */
+.story-narrative {
+  margin-top: 2rem;
+}
+
+.story-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.story-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.story-paragraph .highlight {
+  color: var(--primary-navy);
+  font-weight: 600;
+}
+
+/* Center the about content area */
+.about-content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-tabs {
+  width: 100%;
+  max-width: 800px;
+}
+
+.tab-content {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* Skills and Tools sections in About - make them like quote card */
+#about .skills-section, #about .tools-section {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  margin: 2rem 0 !important;
+}
+
+#about .skills-section *, #about .tools-section * {
+  color: #ffffff !important;
+}
+
+#about .skills-section h3, #about .tools-section h3 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+#about .skills-section p, #about .tools-section p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+
+/* Tech Icons - Make them larger */
+.tech-icons {
+  font-size: 4rem !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 1rem !important;
+}
+
+.tech-icons:hover {
+  transform: scale(1.1) !important;
+  color: var(--accent-gold) !important;
+}
+
+/* Ensure icons are visible in the skills sections */
+#about .tech-icons {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+
+/* Center the GitHub calendar section */
+.project-heading {
+  text-align: center !important;
+  width: 100% !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Center the GitHub calendar container */
+#about .github-calendar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Ensure the calendar itself is centered */
+#about .react-activity-calendar {
+  margin: 0 auto !important;
+}
+
 

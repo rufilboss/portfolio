@@ -64,38 +64,27 @@ function About() {
         return (
           <div className="about-content">
             <div className="story-section">
-              <div className="intro-text">
-                <h3 className="content-title">Hello! I'm <span className="highlight">Ilyas Rufai</span></h3>
-                <p className="lead-text">
-                  A dedicated engineering student from <span className="highlight">Nigeria</span> with a passion for both 
-                  academic research and software engineering.
+              <h3 className="content-title">My Story</h3>
+              <div className="story-narrative">
+                <p className="story-paragraph">
+                  Hello! I'm <span className="highlight">Ilyas Rufai</span>, a passionate engineering student from Nigeria who believes in the power of technology to solve real-world problems. My journey began with a curiosity about how things work and a desire to make a meaningful impact in both the academic and technological spheres.
                 </p>
-              </div>
-              
-              <div className="story-grid">
-                <div className="story-card">
-                  <div className="story-icon">
-                    <FaUniversity />
-                  </div>
-                  <h4>Academic Excellence</h4>
-                  <p>Currently pursuing my engineering degree at the University of Ilorin, I've recently joined a research lab where I'm working on cutting-edge projects and preparing for my first publications.</p>
-                </div>
                 
-                <div className="story-card">
-                  <div className="story-icon">
-                    <FaCode />
-                  </div>
-                  <h4>Software Engineering</h4>
-                  <p>I specialize in building robust, scalable solutions using modern technologies. My expertise spans full-stack development, DevOps practices, and system architecture.</p>
-                </div>
+                <p className="story-paragraph">
+                  Currently pursuing my degree in <span className="highlight">Agricultural & Biosystems Engineering</span> at the University of Ilorin, I've recently joined a civil engineering research lab where I'm working on cutting-edge projects that bridge the gap between traditional engineering and modern technology. This experience has deepened my understanding of complex systems and reinforced my passion for interdisciplinary research.
+                </p>
                 
-                <div className="story-card">
-                  <div className="story-icon">
-                    <FaBlog />
-                  </div>
-                  <h4>Knowledge Sharing</h4>
-                  <p>I maintain an active blog where I share insights on software engineering, research methodologies, and technical tutorials that help developers and students.</p>
-                </div>
+                <p className="story-paragraph">
+                  As a software engineer, I specialize in building robust, scalable solutions using modern technologies. My expertise spans <span className="highlight">full-stack development, DevOps practices, and system architecture</span>. I'm particularly passionate about creating software that solves real-world engineering problems and bridges the gap between research and practical applications.
+                </p>
+                
+                <p className="story-paragraph">
+                  I maintain an active blog where I share insights on software engineering, research methodologies, and technical tutorials. My writing has helped many developers and students in the community, and I believe in the power of knowledge sharing to drive innovation and growth.
+                </p>
+                
+                <p className="story-paragraph">
+                  Beyond my technical work, I'm committed to continuous learning, collaboration, and contributing to projects that have a positive impact on society. Whether it's through research, software development, or knowledge sharing, I strive to be part of solutions that matter.
+                </p>
               </div>
             </div>
           </div>
@@ -254,34 +243,8 @@ function About() {
           </p>
         </div>
         
-        <Row className="about-main-content">
-          <Col lg={4} className="about-sidebar">
-            <div className="profile-card">
-              <div className="profile-image">
-                <img src={avatar} alt="Ilyas Rufai" />
-                <div className="profile-overlay">
-                  <div className="profile-badge">Engineering Student</div>
-                </div>
-              </div>
-              
-              <div className="profile-info">
-                <h3>Ilyas Rufai</h3>
-                <p className="profile-title">Agricultural & Biosystems Engineer</p>
-                <p className="profile-location">University of Ilorin, Nigeria</p>
-              </div>
-              
-              <div className="achievements-grid">
-                {achievements.map((achievement, index) => (
-                  <div key={index} className="achievement-item">
-                    <achievement.icon style={{ color: achievement.color }} />
-                    <span>{achievement.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Col>
-          
-          <Col lg={8} className="about-content-area">
+        <Row className="about-main-content justify-content-center">
+          <Col lg={10} xl={8} className="about-content-area">
             <div className="content-tabs">
               {tabs.map((tab) => {
                 const IconComponent = tab.icon;
