@@ -770,7 +770,7 @@ h1, h2, h3, h4, h5, h6 {
 .journey-year {
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: var(--primary) !important;
+  color: var(--accent-gold) !important;
   margin-right: 2rem !important;
   min-width: 80px !important;
 }
@@ -782,18 +782,18 @@ h1, h2, h3, h4, h5, h6 {
 .journey-title {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
   margin-bottom: 0.5rem !important;
 }
 
 .journey-institution {
-  color: var(--primary) !important;
+  color: var(--accent-gold) !important;
   font-weight: 500 !important;
   margin-bottom: 1rem !important;
 }
 
 .journey-description {
-  color: var(--text-secondary) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
   margin-bottom: 1rem !important;
   line-height: 1.6 !important;
 }
@@ -805,12 +805,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .achievement-item {
-  color: var(--text-secondary) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   font-size: 0.875rem !important;
 }
 
 .skills-section {
-  background: var(--gray-50) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   padding: 2rem !important;
   border-radius: 1rem !important;
 }
@@ -818,7 +820,7 @@ h1, h2, h3, h4, h5, h6 {
 .skills-title {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
   margin-bottom: 2rem !important;
 }
 
@@ -835,12 +837,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .skill-name {
   font-weight: 500 !important;
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
 }
 
 .skill-percentage {
   font-size: 0.875rem !important;
-  color: var(--text-muted) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .skill-bar {
@@ -879,7 +881,9 @@ h1, h2, h3, h4, h5, h6 {
 .highlight-item {
   text-align: center !important;
   padding: 1rem !important;
-  background: var(--white) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 0.5rem !important;
   box-shadow: var(--shadow-sm) !important;
 }
@@ -888,12 +892,12 @@ h1, h2, h3, h4, h5, h6 {
   display: block !important;
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: var(--primary) !important;
+  color: var(--accent-gold) !important;
 }
 
 .highlight-label {
   font-size: 0.875rem !important;
-  color: var(--text-muted) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Network Showcase */
@@ -2377,7 +2381,10 @@ h1, h2, h3, h4, h5, h6 {
 .project-actions {
   display: flex !important;
   gap: 0.75rem !important;
-  margin-top: auto !important;
+  margin-top: 1.5rem !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .btn-primary, .btn-secondary {
@@ -2710,13 +2717,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 !important;
   overflow: hidden !important;
   transition: all 0.3s ease !important;
-  height: 450px !important;
+  min-height: 480px !important;
+  height: auto !important;
   display: flex !important;
   flex-direction: column !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
 }
 
 .project-card:hover {
   transform: translateY(-5px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
 }
 
 .project-image-container {
@@ -2725,7 +2735,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 280px !important;
   overflow: hidden !important;
   border-radius: 16px 16px 0 0 !important;
-  background: #f8f9fa !important;
+  background: transparent !important;
 }
 
 .project-screenshot {
@@ -2733,6 +2743,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100% !important;
   object-fit: cover !important;
   display: block !important;
+  border-radius: 16px 16px 0 0 !important;
 }
 
 .project-content {
@@ -2742,7 +2753,8 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0 0 16px 16px !important;
   padding: 1.5rem !important;
   flex: 1 !important;
-  height: 170px !important;
+  min-height: 200px !important;
+  height: auto !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -2761,7 +2773,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem !important;
   font-weight: 700 !important;
   color: #ffffff !important;
-  margin-bottom: 0.75rem !important;
+  margin-bottom: 1rem !important;
   line-height: 1.3 !important;
 }
 
@@ -2795,7 +2807,10 @@ h1, h2, h3, h4, h5, h6 {
 .project-actions {
   display: flex !important;
   gap: 0.75rem !important;
-  margin-top: auto !important;
+  margin-top: 1.5rem !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .btn-primary, .btn-secondary {
@@ -2838,3 +2853,51 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+/* Project Section Gap */
+#projects {
+  padding-top: 120px !important;
+  padding-bottom: 80px !important;
+}
+
+.project-showcase-section {
+  padding-top: 120px !important;
+  padding-bottom: 80px !important;
+}
+
+/* Project Filter Buttons */
+.project-navigation {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  margin-bottom: 3rem !important;
+  flex-wrap: wrap !important;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 25px !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-btn.active {
+  background: var(--accent-gold) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+}

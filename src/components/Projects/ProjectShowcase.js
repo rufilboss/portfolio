@@ -81,6 +81,7 @@ const ProjectShowcase = () => {
 
       const categories = [
     { id: 'all', label: 'All Projects' },
+    { id: 'featured', label: 'Featured Projects' },
     { id: 'DevOps', label: 'DevOps' },
     { id: 'Research', label: 'Research' },
     { id: 'Web Development', label: 'Web Development' }
@@ -88,6 +89,8 @@ const ProjectShowcase = () => {
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
+    : activeFilter === 'featured'
+    ? projects.filter(project => project.featured === true)
     : projects.filter(project => project.category === activeFilter);
 
   const handleFilterClick = (categoryId) => {
@@ -160,15 +163,7 @@ const ProjectShowcase = () => {
                   <div className="project-category">{project.category}</div>
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
-                  
-                  <div className="tech-stack">
-                    <h4>Tech Stack</h4>
-                    <div className="tech-tags">
-                      {project.techStack.map((tech, index) => (
-                        <span key={index} className="tech-tag">{tech}</span>
-                      ))}
-                    </div>
-                  </div>
+
 
                   <div className="project-actions">
                     <button 
