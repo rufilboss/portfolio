@@ -12,7 +12,8 @@ import {
   FaGlobe,
   FaLightbulb,
   FaUsers,
-  FaBookOpen
+  FaBookOpen,
+  FaBook
 } from "react-icons/fa";
 import { ImPointRight } from "react-icons/im";
 import avatar from "../../Assets/avatar.svg";
@@ -222,6 +223,14 @@ function About() {
                   </div>
                   <h4>Community Impact</h4>
                   <p>My writing has helped many developers and students in the community, driving innovation through knowledge sharing.</p>
+                </div>
+                
+                <div className="research-card">
+                  <div className="research-icon">
+                    <FaBook />
+                  </div>
+                  <h4>Avid Reader</h4>
+                  <p>I read extensively across domains — especially self‑help, engineering, leadership, and technology. I rarely read fiction; I prefer books that sharpen thinking and execution.</p>
                 </div>
               </div>
               

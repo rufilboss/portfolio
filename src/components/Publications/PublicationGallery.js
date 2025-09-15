@@ -5,6 +5,7 @@ const PublicationGallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const publications = [
+
     {
       id: 1,
       type: 'Research Paper',
