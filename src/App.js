@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero/Hero";
 import ResearchTimeline from "./components/Research/ResearchTimeline";
 import About from "./components/About/About";
 import ProjectShowcase from "./components/Projects/ProjectShowcase";
@@ -40,6 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
+              <Hero />
               <About />
               <ResearchTimeline />
               <ProjectShowcase />
