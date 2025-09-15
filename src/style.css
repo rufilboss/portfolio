@@ -3324,3 +3324,10 @@ h1, h2, h3, h4, h5, h6 {
   .footer .footer-copywright { white-space: normal !important; }
   .footer .footer-copywright p.footer-small { display: block !important; margin: 0.15rem 0 !important; }
 }
+
+/* Footer responsive layout tweaks */
+.footer-row { min-height: 64px !important; }
+.footer .footer-icons { justify-content: flex-end !important; }
+@media (max-width: 768px) {
+  .footer .footer-icons { justify-content: center !important; margin-bottom: 0.5rem !important; }
+}
