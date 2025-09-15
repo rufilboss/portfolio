@@ -35,9 +35,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <Row>
+        <Row className="contact-row align-items-stretch">
           <Col lg={6}>
-            <div className="contact-info">
+            <div className="contact-info h-100 d-flex flex-column">
               <h3>Let's Start a Conversation</h3>
               <p className="contact-description">
                 I'm always excited to discuss new opportunities, research collaborations, 
@@ -69,29 +69,24 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="social-links">
-                <h4>Connect on Social Media</h4>
-                <div className="social-icons">
-                  <a href="https://linkedin.com/in/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                    💼
-                  </a>
-                  <a href="https://github.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                    💻
-                  </a>
-                  <a href="https://twitter.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                    🐦
-                  </a>
-                  <a href="https://rufilboss.substack.com" className="social-link" target="_blank" rel="noopener noreferrer">
-                    📝
-                  </a>
+              {/* Moved Current Availability card here, replacing social media section */}
+              <div className="availability-card text-center mt-4 mt-auto">
+                <h3>Current Availability</h3>
+                <div className="availability-status">
+                  <div className="status-indicator available"></div>
+                  <span className="status-text">Available for new opportunities</span>
                 </div>
+                <p className="availability-note">
+                  Open to research collaborations, freelance projects, and full-time opportunities 
+                  in DevOps, Agricultural Engineering, and Software Development.
+                </p>
               </div>
             </div>
           </Col>
 
           <Col lg={6}>
-            <div className="contact-form-container">
-              <Form className="contact-form" onSubmit={handleSubmit}>
+            <div className="contact-form-container h-100 d-flex flex-column">
+              <Form className="contact-form flex-grow-1 d-flex flex-column" onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <Form.Label>Full Name</Form.Label>
                   <Form.Control
@@ -128,7 +123,7 @@ const Contact = () => {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group className="mb-3 flex-grow-1 d-flex flex-column">
                   <Form.Label>Message</Form.Label>
                   <Form.Control
                     as="textarea"
@@ -137,11 +132,12 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Tell me about your project or idea..."
+                    className="flex-grow-1"
                     required
                   />
                 </Form.Group>
 
-                <Button type="submit" className="btn-primary w-100">
+                <Button type="submit" className="btn-primary w-100 mt-auto">
                   Send Message
                 </Button>
               </Form>
@@ -149,23 +145,6 @@ const Contact = () => {
           </Col>
         </Row>
 
-        <div className="availability-section">
-          <Row>
-            <Col md={8} className="mx-auto">
-              <div className="availability-card text-center">
-                <h3>Current Availability</h3>
-                <div className="availability-status">
-                  <div className="status-indicator available"></div>
-                  <span className="status-text">Available for new opportunities</span>
-                </div>
-                <p className="availability-note">
-                  Open to research collaborations, freelance projects, and full-time opportunities 
-                  in DevOps, Agricultural Engineering, and Software Development.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </div>
       </Container>
     </section>
   );

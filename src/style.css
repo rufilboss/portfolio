@@ -810,17 +810,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .skills-section {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   padding: 2rem !important;
   border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
 
 .skills-title {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: #ffffff !important;
+  color: #1e293b !important;
   margin-bottom: 2rem !important;
 }
 
@@ -837,12 +837,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .skill-name {
   font-weight: 500 !important;
-  color: #ffffff !important;
+  color: #374151 !important;
 }
 
 .skill-percentage {
   font-size: 0.875rem !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7280 !important;
 }
 
 .skill-bar {
@@ -881,11 +881,10 @@ h1, h2, h3, h4, h5, h6 {
 .highlight-item {
   text-align: center !important;
   padding: 1rem !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 0.5rem !important;
-  box-shadow: var(--shadow-sm) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
 .highlight-number {
@@ -897,7 +896,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .highlight-label {
   font-size: 0.875rem !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: #6b7280 !important;
 }
 
 /* Network Showcase */
@@ -2093,13 +2092,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Exempt light-surface containers inside dark sections from white text override */
 #about .profile-card, #about .profile-card *,
-#academic .skills-section, #academic .skills-section *,
-#projects 
-
-#projects 
-#projects 
-#projects 
-
 #contact .contact-form-container { background: var(--white) !important; border: 1px solid var(--gray-200) !important; box-shadow: var(--shadow-sm) !important; }
 #contact .availability-card { background: var(--white) !important; }
 
@@ -2167,17 +2159,18 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2rem 0 !important;
 }
 
+/* Skills section text - dark on white background */
 #about .skills-section *, #about .tools-section * {
-  color: #ffffff !important;
+  color: #1e293b !important;
 }
 
 #about .skills-section h3, #about .tools-section h3 {
-  color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6) !important;
+  color: #1e293b !important;
+  text-shadow: none !important;
 }
 
 #about .skills-section p, #about .tools-section p {
-  color: rgba(255,255,255,0.9) !important;
+  color: #374151 !important;
 }
 
 
@@ -2900,4 +2893,434 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important;
   border-color: var(--accent-gold) !important;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+}
+
+
+/* Skills section specific overrides - STRONG */
+.skills-section * {
+  color: #1e293b !important;
+}
+
+.skills-section h1, .skills-section h2, .skills-section h3, .skills-section h4, .skills-section h5, .skills-section h6 {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+.skills-section p, .skills-section span, .skills-section li, .skills-section div {
+  color: #374151 !important;
+}
+
+.skills-section .skill-name {
+  color: #374151 !important;
+}
+
+.skills-section .skill-percentage {
+  color: #6b7280 !important;
+}
+
+.highlight-item * {
+  color: #1e293b !important;
+}
+
+.highlight-item h1, .highlight-item h2, .highlight-item h3, .highlight-item h4, .highlight-item h5, .highlight-item h6 {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+.highlight-item p, .highlight-item span, .highlight-item li, .highlight-item div {
+  color: #374151 !important;
+}
+
+.highlight-item .highlight-label {
+  color: #6b7280 !important;
+}
+
+.highlight-item .highlight-number {
+  color: var(--accent-gold) !important;
+}
+
+/* FINAL FIX - Skills section text visibility */
+#academic .skills-section h3,
+#academic .skills-section p,
+#academic .skills-section span,
+#academic .skills-section div,
+#academic .skills-section .skill-name,
+#academic .skills-section .skill-percentage {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Fix academics highlight heading */
+#academic .highlight-item h3,
+#academic .highlight-item h4,
+#academic .highlight-item .highlight-label {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Fix highlight cards text - make it black */
+.highlight-item .highlight-number,
+.highlight-item .highlight-label,
+.highlight-item h1,
+.highlight-item h2,
+.highlight-item h3,
+.highlight-item h4,
+.highlight-item h5,
+.highlight-item h6,
+.highlight-item p,
+.highlight-item span,
+.highlight-item div {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Fix Academic Highlights heading */
+#academic h2,
+#academic .section-title,
+#academic .academic-highlights h2 {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Fix: Main Academic Journey heading back to white, only card heading to black */
+#academic h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+#academic .section-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Only fix the heading inside the white card */
+.academic-highlights h2,
+.academic-highlights .card-title {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Fix Academic Highlights heading in white card */
+#academic .academic-highlights h2,
+#academic .academic-highlights .card-title,
+#academic .academic-highlights h3,
+#academic .academic-highlights h4 {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* Scoped fix: About > Technical Skills & Development Tools should be dark on white cards */
+#about .skills-section,
+#about .tools-section {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 1rem !important;
+}
+
+#about .skills-section *,
+#about .tools-section * {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+#about .skills-section .section-title,
+#about .tools-section .section-title,
+#about .skills-section .section-subtitle,
+#about .tools-section .section-subtitle {
+  color: #1e293b !important;
+}
+
+/* Icons inside these white cards should be dark, not white */
+#about .skills-section .tech-icons,
+#about .tools-section .tech-icons {
+  color: #1e293b !important;
+}
+
+#about .skills-section .tech-icons:hover,
+#about .tools-section .tech-icons:hover {
+  color: var(--primary) !important;
+}
+
+/* FINAL SCOPED OVERRIDES — do not affect other sections */
+/* About: force white cards with dark text for Skills/Tools only */
+#about .skills-section, #about .tools-section { background: #ffffff !important; border: 1px solid #e2e8f0 !important; border-radius: 1rem !important; }
+#about .skills-section h1, #about .skills-section h2, #about .skills-section h3, #about .skills-section h4,
+#about .tools-section h1, #about .tools-section h2, #about .tools-section h3, #about .tools-section h4 { color: #1e293b !important; text-shadow: none !important; }
+#about .skills-section p, #about .skills-section span, #about .skills-section li,
+#about .tools-section p, #about .tools-section span, #about .tools-section li { color: #374151 !important; text-shadow: none !important; }
+#about .skills-section .tech-icons, #about .tools-section .tech-icons, 
+#about .skills-section .tech-icons svg, #about .tools-section .tech-icons svg { color: #1e293b !important; text-shadow: none !important; }
+#about .skills-section .tech-icons:hover, #about .tools-section .tech-icons:hover, 
+#about .skills-section .tech-icons:hover svg, #about .tools-section .tech-icons:hover svg { color: var(--primary) !important; }
+
+/* Ensure global dark-section rule does not override inside these cards */
+#about .skills-section *, #about .tools-section * { -webkit-text-fill-color: initial; }
+
+/* REVERT: About Skills/Tools back to quote-card glass style (no white background) */
+#about .skills-section,
+#about .tools-section {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+}
+
+/* Ensure readable light text inside these glass cards */
+#about .skills-section h1, #about .skills-section h2, #about .skills-section h3, #about .skills-section h4,
+#about .tools-section h1, #about .tools-section h2, #about .tools-section h3, #about .tools-section h4 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6) !important;
+}
+#about .skills-section .section-title, #about .skills-section .section-subtitle,
+#about .tools-section .section-title, #about .tools-section .section-subtitle {
+  color: #ffffff !important;
+}
+#about .skills-section p, #about .skills-section span, #about .skills-section li,
+#about .tools-section p, #about .tools-section span, #about .tools-section li {
+  color: rgba(255,255,255,0.95) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+
+/* Icons in these cards: white, hover gold */
+#about .skills-section .tech-icons, #about .tools-section .tech-icons,
+#about .skills-section .tech-icons svg, #about .tools-section .tech-icons svg {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+#about .skills-section .tech-icons:hover, #about .tools-section .tech-icons:hover,
+#about .skills-section .tech-icons:hover svg, #about .tools-section .tech-icons:hover svg {
+  color: var(--accent-gold) !important;
+}
+
+/* Ensure About Skills/Tools icons are white on glass cards */
+#about .skills-section .tech-icons,
+#about .skills-section .tech-icons svg,
+#about .tools-section .tech-icons,
+#about .tools-section .tech-icons svg {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+
+/* Final: ensure icons are white on glass cards (scoped to About skills/tools) */
+#about .skills-section .tech-icons svg path,
+#about .skills-section .tech-icons svg circle,
+#about .skills-section .tech-icons svg rect,
+#about .skills-section .tech-icons svg line,
+#about .tools-section .tech-icons svg path,
+#about .tools-section .tech-icons svg circle,
+#about .tools-section .tech-icons svg rect,
+#about .tools-section .tech-icons svg line {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Fix: prevent solid white boxes on certain icons (rects should be transparent) */
+#about .skills-section .tech-icons svg rect,
+#about .tools-section .tech-icons svg rect {
+  fill: none !important;
+  stroke: #ffffff !important;
+}
+
+/* Brand colors for About Technical Skills icons */
+#about .skills-section .tech-icons.docker { color: #2496ED !important; }
+#about .skills-section .tech-icons.kubernetes { color: #326CE5 !important; }
+#about .skills-section .tech-icons.jenkins { color: #D33833 !important; }
+#about .skills-section .tech-icons.terraform { color: #844FBA !important; }
+#about .skills-section .tech-icons.ansible { color: #EE0000 !important; }
+#about .skills-section .tech-icons.python { color: #3776AB !important; }
+#about .skills-section .tech-icons.php { color: #777BB4 !important; }
+#about .skills-section .tech-icons.javascript { color: #F7DF1E !important; }
+#about .skills-section .tech-icons.golang { color: #00ADD8 !important; }
+#about .skills-section .tech-icons.node { color: #339933 !important; }
+#about .skills-section .tech-icons.mongodb { color: #47A248 !important; }
+#about .skills-section .tech-icons.git { color: #F05032 !important; }
+#about .skills-section .tech-icons.firebase { color: #FFCA28 !important; }
+#about .skills-section .tech-icons.redis { color: #DC382D !important; }
+#about .skills-section .tech-icons.postgresql { color: #336791 !important; }
+#about .skills-section .tech-icons.prometheus { color: #E6522C !important; }
+#about .skills-section .tech-icons.grafana { color: #F46800 !important; }
+#about .skills-section .tech-icons.chef { color: #F09820 !important; }
+#about .skills-section .tech-icons.puppet { color: #FFAD00 !important; }
+#about .skills-section .tech-icons.rabbitmq { color: #FF6600 !important; }
+
+/* Ensure icons render with their color (do not override children) */
+#about .skills-section .tech-icons svg { fill: currentColor !important; stroke: currentColor !important; }
+#about .skills-section .tech-icons svg rect { fill: none !important; }
+
+/* FINAL: Use brand colors for About Technical Skills icons (override white fills) */
+#about .skills-section .tech-icons svg path,
+#about .skills-section .tech-icons svg circle,
+#about .skills-section .tech-icons svg line,
+#about .tools-section .tech-icons svg path,
+#about .tools-section .tech-icons svg circle,
+#about .tools-section .tech-icons svg line {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+#about .skills-section .tech-icons svg rect,
+#about .tools-section .tech-icons svg rect {
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+/* CONTRAST FIX: About skills/tools icons back to white with transparent rects */
+#about .skills-section .tech-icons,
+#about .skills-section .tech-icons svg,
+#about .tools-section .tech-icons,
+#about .tools-section .tech-icons svg { color: #ffffff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.35) !important; }
+#about .skills-section .tech-icons svg path,
+#about .skills-section .tech-icons svg circle,
+#about .skills-section .tech-icons svg line,
+#about .tools-section .tech-icons svg path,
+#about .tools-section .tech-icons svg circle,
+#about .tools-section .tech-icons svg line { fill: #ffffff !important; stroke: #ffffff !important; }
+#about .skills-section .tech-icons svg rect,
+#about .tools-section .tech-icons svg rect { fill: none !important; stroke: #ffffff !important; }
+#about .skills-section .tech-icons:hover,
+#about .tools-section .tech-icons:hover { color: var(--accent-gold) !important; }
+
+/* Brand colors for newly added icons (if we switch back later) */
+#about .skills-section .tech-icons.react { color: #61DAFB !important; }
+#about .skills-section .tech-icons.typescript { color: #3178C6 !important; }
+#about .skills-section .tech-icons.nginx { color: #009639 !important; }
+#about .skills-section .tech-icons.aws { color: #FF9900 !important; }
+
+/* FINAL BRAND MODE: Technical Skills icons use official colors (About only) */
+#about .skills-section .tech-icons svg path,
+#about .skills-section .tech-icons svg circle,
+#about .skills-section .tech-icons svg line {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+#about .skills-section .tech-icons svg rect { fill: none !important; stroke: currentColor !important; }
+
+/* Default icon color fallback (slightly bright) */
+#about .skills-section .tech-icons { color: #e5e7eb !important; text-shadow: none !important; }
+
+/* Brand colors per icon */
+#about .skills-section .tech-icons.docker { color: #2496ED !important; }
+#about .skills-section .tech-icons.kubernetes { color: #326CE5 !important; }
+#about .skills-section .tech-icons.jenkins { color: #D33833 !important; }
+#about .skills-section .tech-icons.terraform { color: #844FBA !important; }
+#about .skills-section .tech-icons.ansible { color: #EE0000 !important; }
+#about .skills-section .tech-icons.python { color: #3776AB !important; }
+#about .skills-section .tech-icons.php { color: #777BB4 !important; }
+#about .skills-section .tech-icons.javascript { color: #F7DF1E !important; }
+#about .skills-section .tech-icons.golang { color: #00ADD8 !important; }
+#about .skills-section .tech-icons.node { color: #339933 !important; }
+#about .skills-section .tech-icons.mongodb { color: #47A248 !important; }
+#about .skills-section .tech-icons.git { color: #F05032 !important; }
+#about .skills-section .tech-icons.firebase { color: #FFCA28 !important; }
+#about .skills-section .tech-icons.redis { color: #DC382D !important; }
+#about .skills-section .tech-icons.postgresql { color: #336791 !important; }
+#about .skills-section .tech-icons.prometheus { color: #E6522C !important; }
+#about .skills-section .tech-icons.grafana { color: #F46800 !important; }
+#about .skills-section .tech-icons.chef { color: #F09820 !important; }
+#about .skills-section .tech-icons.puppet { color: #FFAD00 !important; }
+#about .skills-section .tech-icons.rabbitmq { color: #FF6600 !important; }
+#about .skills-section .tech-icons.react { color: #61DAFB !important; }
+#about .skills-section .tech-icons.typescript { color: #3178C6 !important; }
+#about .skills-section .tech-icons.nginx { color: #009639 !important; }
+#about .skills-section .tech-icons.aws { color: #FF9900 !important; }
+
+/* Hover: subtle brighten, keep brand */
+#about .skills-section .tech-icons:hover { filter: brightness(1.15); color: inherit !important; }
+
+/* REVERT TO WHITE: About skills/tools icons for max contrast */
+#about .skills-section .tech-icons,
+#about .skills-section .tech-icons svg,
+#about .tools-section .tech-icons,
+#about .tools-section .tech-icons svg { color: #ffffff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.35) !important; }
+#about .skills-section .tech-icons svg path,
+#about .skills-section .tech-icons svg circle,
+#about .skills-section .tech-icons svg line,
+#about .tools-section .tech-icons svg path,
+#about .tools-section .tech-icons svg circle,
+#about .tools-section .tech-icons svg line { fill: #ffffff !important; stroke: #ffffff !important; }
+#about .skills-section .tech-icons svg rect,
+#about .tools-section .tech-icons svg rect { fill: none !important; stroke: #ffffff !important; }
+#about .skills-section .tech-icons:hover,
+#about .tools-section .tech-icons:hover { color: var(--accent-gold) !important; }
+
+/* Academic: make text in the four highlight cards blue (scoped) */
+#academic .academic-highlights .highlight-item *,
+#academic .academic-highlights .highlight-item h1,
+#academic .academic-highlights .highlight-item h2,
+#academic .academic-highlights .highlight-item h3,
+#academic .academic-highlights .highlight-item h4,
+#academic .academic-highlights .highlight-item h5,
+#academic .academic-highlights .highlight-item h6 {
+  color: #3b82f6 !important; /* themed blue */
+  text-shadow: none !important;
+}
+
+/* Academic: use the same primary blue as home stats for highlight cards */
+#academic .academic-highlights .highlight-item *,
+#academic .academic-highlights .highlight-item h1,
+#academic .academic-highlights .highlight-item h2,
+#academic .academic-highlights .highlight-item h3,
+#academic .academic-highlights .highlight-item h4,
+#academic .academic-highlights .highlight-item h5,
+#academic .academic-highlights .highlight-item h6 {
+  color: var(--primary) !important;
+}
+
+/* Network social chips - compact row under header */
+#network .network-social-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin: -1rem 0 2rem 0; }
+#network .network-social-chips .chip { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.9rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: #ffffff; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+#network .network-social-chips .chip:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.18); background: rgba(255,255,255,0.18); }
+#network .network-social-chips .chip svg { font-size: 1rem; }
+#network .network-social-chips .chip.linkedin { border-color: #0a66c2; }
+#network .network-social-chips .chip.github { border-color: #6e7681; }
+#network .network-social-chips .chip.twitter { border-color: #1DA1F2; }
+#network .network-social-chips .chip.email { border-color: #f59e0b; }
+
+/* Fix: make social chip text dark and background solid for readability */
+#network .network-social-chips .chip {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+#network .network-social-chips .chip span { color: inherit !important; }
+#network .network-social-chips .chip svg { color: inherit !important; }
+
+/* Contact availability card dim background */
+#contact .availability-card {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-radius: 1rem !important;
+}
+#contact .availability-card h3, 
+#contact .availability-card .status-text, 
+#contact .availability-card .availability-note { color: #ffffff !important; }
+
+/* Contact: make both columns equal height and bottoms aligned */
+#contact .contact-row { align-items: stretch !important; }
+#contact .contact-info, #contact .contact-form-container { height: 100% !important; }
+#contact .availability-card { margin-top: auto !important; }
+
+/* Footer: inline copyright lines and horizontal icons */
+.footer .footer-copywright { display: inline-block !important; margin: 0 0.5rem !important; }
+.footer .footer-copywright p { display: inline-block !important; margin: 0 0.5rem !important; }
+.footer .footer-icons { display: flex !important; flex-direction: row !important; justify-content: center !important; }
+.footer .footer-icons li { display: inline-block !important; }
+
+/* Footer adjustments per request */
+.footer .footer-copywright p.footer-small { color: #ffffff !important; font-size: 1.425rem !important; }
+.footer-icons.footer-icons-large { gap: 1.5rem !important; }
+.footer-icons.footer-icons-large svg { font-size: 2.8rem !important; }
+
+/* Footer visual refinement */
+.footer { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; }
+.footer-icons.footer-icons-large { gap: 1.25rem !important; margin-bottom: 0.5rem !important; justify-content: center !important; }
+.footer-icons.footer-icons-large svg { font-size: 2.2rem !important; }
+.footer .footer-copywright { white-space: nowrap !important; }
+.footer .footer-copywright p.footer-small { color: #ffffff !important; font-size: 1.1rem !important; margin: 0 0.5rem !important; display: inline-block !important; }
+@media (max-width: 576px) {
+  .footer .footer-copywright { white-space: normal !important; }
+  .footer .footer-copywright p.footer-small { display: block !important; margin: 0.15rem 0 !important; }
 }

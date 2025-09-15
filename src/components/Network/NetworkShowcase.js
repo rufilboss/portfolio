@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
 
 const NetworkShowcase = () => {
   const connections = [
@@ -54,6 +55,22 @@ const NetworkShowcase = () => {
           </p>
         </div>
 
+        {/* Compact social chips row */}
+        <div className="network-social-chips">
+          <a href="https://linkedin.com/in/rufilboss" target="_blank" rel="noopener noreferrer" className="chip linkedin" aria-label="LinkedIn">
+            <FaLinkedin /> <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/rufilboss" target="_blank" rel="noopener noreferrer" className="chip github" aria-label="GitHub">
+            <FaGithub /> <span>GitHub</span>
+          </a>
+          <a href="https://twitter.com/rufilboss" target="_blank" rel="noopener noreferrer" className="chip twitter" aria-label="Twitter">
+            <FaTwitter /> <span>Twitter</span>
+          </a>
+          <a href="mailto:rufilboss@gmail.com" className="chip email" aria-label="Email">
+            <FaEnvelope /> <span>Email</span>
+          </a>
+        </div>
+
         <Row>
           <Col lg={6}>
             <h3 className="subsection-title">Key Connections</h3>
@@ -89,24 +106,6 @@ const NetworkShowcase = () => {
                   <div className="community-description">{community.description}</div>
                 </div>
               ))}
-            </div>
-
-            <div className="social-presence">
-              <h4>Connect With Me</h4>
-              <div className="social-links">
-                <a href="https://linkedin.com/in/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                  <span>💼</span> LinkedIn
-                </a>
-                <a href="https://github.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                  <span>💻</span> GitHub
-                </a>
-                <a href="https://twitter.com/rufilboss" className="social-link" target="_blank" rel="noopener noreferrer">
-                  <span>🐦</span> Twitter
-                </a>
-                <a href="mailto:rufilboss@gmail.com" className="social-link">
-                  <span>📧</span> Email
-                </a>
-              </div>
             </div>
           </Col>
         </Row>
