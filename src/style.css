@@ -3374,3 +3374,25 @@ h1, h2, h3, h4, h5, h6 {
   .footer .footer-body { padding-left: 5rem !important; }
   .footer .footer-icons.footer-icons-large { margin-left: 3rem !important; }
 }
+
+/* Hero CTA buttons: visible default, yellow on hover */
+.hero-cta .btn { opacity: 1 !important; visibility: visible !important; }
+.hero-cta .btn-secondary { background: #1f2937 !important; color: #ffffff !important; border: 1px solid #e2e8f0 !important; }
+.hero-cta .btn-secondary:hover { background: #f6c048 !important; color: #0f172a !important; border-color: #f6c048 !important; }
+.hero-cta .btn-primary:hover { background: #0f3ea8 !important; }
+
+/* Force hero secondary button to be solid and visible */
+#home .hero-cta a.btn.btn-secondary { background-color: #1f2937 !important; color: #ffffff !important; border: 1px solid #e2e8f0 !important; opacity: 1 !important; }
+#home .hero-cta a.btn.btn-secondary:hover { background-color: #FFC94A !important; color: #0f172a !important; border-color: #FFC94A !important; }
+#home .hero-cta a.btn { margin-right: 0.75rem !important; }
+
+/* Ensure Home secondary CTA is visible regardless of other rules */
+#home .btn-cta-secondary { background-color: #1f2937 !important; color: #ffffff !important; border: 1px solid #e2e8f0 !important; opacity: 1 !important; visibility: visible !important; }
+#home .btn-cta-secondary:hover { background-color: #FFC94A !important; color: #0f172a !important; border-color: #FFC94A !important; }
+
+/* Hero Get In Touch button: solid by default, cool hover */
+.hero-actions .btn-secondary { background: #1f2937 !important; color: #ffffff !important; border: 1px solid #e2e8f0 !important; opacity: 1 !important; }
+.hero-actions .btn-secondary:hover { background: #34d399 !important; color: #0b132b !important; border-color: #34d399 !important; }
+
+/* Ensure navbar logo fits nicely */
+.navbar-logo { height: 44px !important; width: auto !important; object-fit: contain !important; }

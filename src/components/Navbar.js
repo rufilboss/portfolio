@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import logo from "../Assets/logo.svg";
 
 const Navigation = () => {
   return (
@@ -8,7 +7,7 @@ const Navigation = () => {
       <div className="container">
         <Navbar.Brand href="#home" className="navbar-brand">
           <img
-            src={logo}
+            src={process.env.PUBLIC_URL + "/Images/logo.png"}
             alt="Ilyas Rufai Logo"
             className="navbar-logo"
           />

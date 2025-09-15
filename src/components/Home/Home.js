@@ -25,7 +25,7 @@ function Home() {
                 <a href="#about" className="btn btn-primary">
                   Learn More About Me
                 </a>
-                <a href="#projects" className="btn btn-secondary">
+                <a href="#projects" className="btn btn-secondary btn-cta-secondary">
                   View My Work
                 </a>
               </div>
