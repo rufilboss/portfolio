@@ -3331,3 +3331,46 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
   .footer .footer-icons { justify-content: center !important; margin-bottom: 0.5rem !important; }
 }
+
+/* Footer hard alignment: left text, center copyright, right icons */
+.footer .footer-body { display: flex !important; justify-content: flex-end !important; align-items: center !important; }
+.footer .footer-body .footer-icons { display: inline-flex !important; justify-content: flex-end !important; margin: 0 !important; padding: 0 !important; }
+.footer .footer-body .footer-icons li { margin: 0 0.75rem !important; }
+.footer .footer-copywright.text-md-start { text-align: left !important; }
+.footer .footer-copywright.text-center { text-align: center !important; }
+@media (max-width: 767.98px) {
+  .footer .footer-body { justify-content: center !important; }
+}
+
+/* Footer fix: restore column layout and tweak icon sizing */
+.footer .footer-copywright { display: block !important; margin: 0 !important; }
+.footer .footer-copywright p.footer-small { display: inline-block !important; margin: 0 0.5rem !important; }
+.footer .footer-icons.footer-icons-large { gap: 1rem !important; }
+.footer .footer-icons.footer-icons-large svg { font-size: 1.8rem !important; }
+
+/* Footer icon spacing fix */
+.footer-icons.footer-icons-large { gap: 1.5rem !important; }
+.footer .footer-body .footer-icons li { margin: 0 !important; }
+
+/* Footer: nudge right column icons closer to center and match left spacing */
+@media (min-width: 768px) {
+  .footer .footer-body { justify-content: flex-start !important; }
+  .footer .footer-icons.footer-icons-large { margin-left: 1rem !important; gap: 1.5rem !important; }
+}
+
+/* Footer: add a bit more space between center text and right icons on desktop */
+@media (min-width: 768px) {
+  .footer .footer-body { padding-left: 2rem !important; }
+}
+
+/* Footer: increase separation between center text and icons (desktop) */
+@media (min-width: 768px) {
+  .footer .footer-body { padding-left: 3.5rem !important; }
+  .footer .footer-icons.footer-icons-large { margin-left: 2rem !important; }
+}
+
+/* Footer: increase separation further (desktop only) */
+@media (min-width: 768px) {
+  .footer .footer-body { padding-left: 5rem !important; }
+  .footer .footer-icons.footer-icons-large { margin-left: 3rem !important; }
+}

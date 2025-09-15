@@ -24,7 +24,7 @@ function Footer() {
         </Col>
 
         {/* Right: Icons (mobile order 1) */}
-        <Col xs="12" md="4" className="footer-body order-1 order-md-3 text-center text-md-end">
+        <Col xs="12" md="4" className="footer-body order-1 order-md-3 text-center text-md-start">
           <ul className="footer-icons footer-icons-large">
             <li className="social-icons">
               <a
