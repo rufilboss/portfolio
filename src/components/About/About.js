@@ -70,22 +70,31 @@ function About() {
                 <p className="story-paragraph">
                   Hello! I'm <span className="highlight">Ilyas Rufai</span>, a passionate engineering student from Nigeria who believes in the power of technology to solve real-world problems. My journey began with a curiosity about how things work and a desire to make a meaningful impact in both the academic and technological spheres.
                 </p>
-                
+
                 <p className="story-paragraph">
                   Currently pursuing my degree in <span className="highlight">Agricultural & Biosystems Engineering</span> at the University of Ilorin, I've recently joined a civil engineering research lab where I'm working on cutting-edge projects that bridge the gap between traditional engineering and modern technology. This experience has deepened my understanding of complex systems and reinforced my passion for interdisciplinary research.
                 </p>
-                
+
                 <p className="story-paragraph">
                   As a software engineer, I specialize in building robust, scalable solutions using modern technologies. My expertise spans <span className="highlight">full-stack development, DevOps practices, and system architecture</span>. I'm particularly passionate about creating software that solves real-world engineering problems and bridges the gap between research and practical applications.
                 </p>
-                
+
+                <p className="story-paragraph">
+                  Alongside my software journey, I'm also a <span className="highlight">CAD designer</span> with hands-on experience in creating precise engineering models and designs. This skill complements my engineering background and allows me to approach problem-solving with both digital and structural perspectives.
+                </p>
+
+                <p className="story-paragraph">
+                  Outside of engineering and technology, I'm an <span className="highlight">avid reader</span> who enjoys exploring books that broaden my worldview, inspire creativity, and fuel my continuous growth. Reading has been a constant companion in shaping my mindset and deepening my understanding of diverse fields.
+                </p>
+
                 <p className="story-paragraph">
                   I maintain an active blog where I share insights on software engineering, research methodologies, and technical tutorials. My writing has helped many developers and students in the community, and I believe in the power of knowledge sharing to drive innovation and growth.
                 </p>
-                
+
                 <p className="story-paragraph">
-                  Beyond my technical work, I'm committed to continuous learning, collaboration, and contributing to projects that have a positive impact on society. Whether it's through research, software development, or knowledge sharing, I strive to be part of solutions that matter.
+                  Beyond my technical work, I'm committed to continuous learning, collaboration, and contributing to projects that have a positive impact on society. Whether it's through research, software development, CAD design, or knowledge sharing, I strive to be part of solutions that matter.
                 </p>
+
               </div>
             </div>
           </div>
