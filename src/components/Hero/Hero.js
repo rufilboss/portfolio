@@ -10,7 +10,7 @@ const Hero = () => {
     'Student Engineering Researcher',
     'DevOps Engineer',
     'Software Engineer',
-    'Future Lab Collaborator'
+    'CAD Designer'
   ];
 
   useEffect(() => {

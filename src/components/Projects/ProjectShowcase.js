@@ -8,17 +8,29 @@ const ProjectShowcase = () => {
     {
       id: 1,
       category: 'DevOps',
-      title: 'Infrastructure Automation Platform',
-      description: 'Automated deployment pipeline using Terraform, Docker, and Kubernetes for scalable cloud infrastructure.',
-      techStack: ['Terraform', 'Docker', 'Kubernetes', 'AWS', 'Jenkins'],
+      title: 'Real-Time Log Processing API',
+      description: 'This project is a Real-Time Log Processing API built with FastAPI, Celery, Redis, and MongoDB. It processes incoming log data asynchronously, stores them in a MongoDB database, and performs background tasks (e.g., filtering sensitive information) using Celery workers. The infrastructure is containerized with Docker, making it highly scalable and suitable for real-world applications such as centralized log processing,fraud detection, and asynchronous data processing.',
+      techStack: ['FastAPI', 'Celery', 'Redis', 'MongoDB', 'Docker'],
       status: 'completed',
       screenshot: 'Images/malariadetect.png',
-      githubUrl: 'https://github.com/rufilboss/infrastructure-automation',
-      liveUrl: 'https://infra-demo.example.com',
-      featured: true
+      githubUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
+      liveUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
+      featured: false
     },
     {
       id: 2,
+      category: 'Web Development',
+      title: 'LOGIQ',
+      description: 'LogIQ is an open-source web performance monitoring tool that provides a comprehensive analysis of website performance on both desktop and mobile devices. With LogIQ, website owners and developers can gain deep insights into their websites performance and take actions to improve the speed and user experience.',
+      techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React'],
+      status: 'in-development',
+      screenshot: 'Images/logiq.png',
+      githubUrl: 'https://github.com/FreeOps-Tools/LogIQ',
+      liveUrl: 'https://logiq.netlify.app/',
+      featured: true
+    },
+    {
+      id: 3,
       category: 'Research',
       title: 'Smart Agricultural IoT System',
       description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis.',
@@ -27,22 +39,22 @@ const ProjectShowcase = () => {
       screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/smart-agriculture-iot',
       liveUrl: 'https://agri-iot-demo.example.com',
-      featured: true
-    },
-    {
-      id: 3,
-      category: 'Web Development',
-      title: 'Engineering Blog Platform',
-      description: 'Full-stack blog platform for sharing engineering insights and research findings.',
-      techStack: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
-      status: 'completed',
-      screenshot: 'Images/malariadetect.png',
-      githubUrl: 'https://github.com/rufilboss/engineering-blog',
-      liveUrl: 'https://engineering-blog.example.com',
       featured: false
     },
     {
       id: 4,
+      category: 'Web Development',
+      title: 'Malaria Detect',
+      description: 'Malaria Detect is dedicated to leveraging artificial intelligence to provide rapid, accurate, and accessible malaria diagnosis.',
+      techStack: [ 'Jupyter Notebook', 'TensorFlow', 'Keras', 'Python', 'JavaScript', 'CSS', 'HTML'],
+      status: 'completed',
+      screenshot: 'Images/malariadetect.png',
+      githubUrl: 'https://github.com/rufilboss/MalariaDetect',
+      liveUrl: 'https://malariadetect.netlify.app/',
+      featured: true
+    },
+    {
+      id: 5,
       category: 'Research',
       title: 'Civil Engineering Data Analytics',
       description: 'Data analysis platform for civil engineering projects with predictive modeling.',
@@ -54,19 +66,19 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 5,
-      category: 'DevOps',
-      title: 'Microservices Monitoring Dashboard',
-      description: 'Real-time monitoring dashboard for microservices architecture with alerting.',
-      techStack: ['Grafana', 'Prometheus', 'ELK Stack', 'Docker', 'Kubernetes'],
-      status: 'completed',
+      id: 6,
+      category: 'Web Development',
+      title: 'GrowCycle',
+      description: 'A comprehensive web application that helps users create, track, and optimize their personal productivity systems with advanced analytics, notifications, and a digital whiteboard.',
+      techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Python', 'PostgreSQL', 'JWT', 'FastAPI', 'Bash'],
+      status: 'in-development',
       screenshot: 'Images/malariadetect.png',
-      githubUrl: 'https://github.com/rufilboss/microservices-monitoring',
-      liveUrl: 'https://monitoring-demo.example.com',
-      featured: true
+      githubUrl: 'https://github.com/rufilboss/GrowCycle',
+      liveUrl: 'https://growcycle.netlify.app/',
+      featured: false
     },
     {
-      id: 6,
+      id: 7,
       category: 'Web Development',
       title: 'Agricultural Data Visualization',
       description: 'Interactive data visualization platform for agricultural research data.',

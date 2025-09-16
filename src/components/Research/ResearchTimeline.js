@@ -5,24 +5,30 @@ const ResearchTimeline = () => {
   const timelineData = [
     {
       year: '2025',
+      title: 'Unilorin Central Research Lab',
+      description: 'Joined the Unilorin Central Research Lab to explore sustainable infrastructure solutions and smart city technologies.',
+      achievements: ['Smart Infrastructure', 'IoT Integration', 'Real-Time Data Analysis', 'Research']
+    },
+    {
+      year: '2025',
       title: 'Civil Engineering Research Lab',
       description: 'Joined the Civil Engineering Research Lab to explore sustainable infrastructure solutions and smart city technologies.',
       achievements: ['Smart Infrastructure', 'IoT Integration', 'Data Analysis']
     },
     {
-      year: '2024',
+      year: '2023',
       title: 'Agricultural & Biosystems Engineering',
       description: 'Started pursuing Agricultural and Biosystems Engineering with focus on precision agriculture and automation.',
       achievements: ['Precision Agriculture', 'Automation Systems', 'IoT Sensors']
     },
     {
-      year: '2024',
+      year: '2021',
       title: 'DevOps Engineering Journey',
       description: 'Began transition into DevOps engineering, learning infrastructure automation and cloud technologies.',
       achievements: ['Terraform', 'Docker', 'Kubernetes', 'AWS']
     },
     {
-      year: '2023',
+      year: '2021',
       title: 'Software Development Foundation',
       description: 'Established strong foundation in software development and engineering principles.',
       achievements: ['Full-Stack Development', 'Database Design', 'API Development']
