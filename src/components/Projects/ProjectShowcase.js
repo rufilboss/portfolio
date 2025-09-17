@@ -12,7 +12,7 @@ const ProjectShowcase = () => {
       description: 'This project is a Real-Time Log Processing API built with FastAPI, Celery, Redis, and MongoDB. It processes incoming log data asynchronously, stores them in a MongoDB database, and performs background tasks (e.g., filtering sensitive information) using Celery workers. The infrastructure is containerized with Docker, making it highly scalable and suitable for real-world applications such as centralized log processing,fraud detection, and asynchronous data processing.',
       techStack: ['FastAPI', 'Celery', 'Redis', 'MongoDB', 'Docker'],
       status: 'completed',
-      screenshot: 'Images/malariadetect.png',
+      screenshot: 'Images/realtimelogprocessingapi.png',
       githubUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
       liveUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
       featured: false
@@ -36,7 +36,7 @@ const ProjectShowcase = () => {
       description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis.',
       techStack: ['Python', 'Arduino', 'TensorFlow', 'MQTT', 'React'],
       status: 'in-development',
-      screenshot: 'Images/malariadetect.png',
+      screenshot: 'Images/smartagricultureiot.png',
       githubUrl: 'https://github.com/rufilboss/smart-agriculture-iot',
       liveUrl: 'https://agri-iot-demo.example.com',
       featured: false
@@ -75,6 +75,18 @@ const ProjectShowcase = () => {
       screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/GrowCycle',
       liveUrl: 'https://growcycle.netlify.app/',
+      featured: false
+    },
+    {
+      id: 6,
+      category: 'Web Development',
+      title: 'Danjuma Empire',
+      description: 'Built a landing page website for a company in Nigeria that deals with real estate, automobile and construction.',
+      techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js'],
+      status: 'completed',
+      screenshot: 'Images/danjumaempire.png',
+      githubUrl: 'https://github.com/Danjuma-Empire/landingpage',
+      liveUrl: 'https://danjumaempire.netlify.app/',
       featured: false
     },
     {
