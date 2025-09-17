@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
+import Hero from "./components/Hero/Hero";
+import CareerHighlights from "./components/Career/CareerHighlights";
 import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
+import ProjectShowcase from "./components/Projects/ProjectShowcase";
+import PublicationGallery from "./components/Publications/PublicationGallery";
+import AcademicJourney from "./components/Academic/AcademicJourney";
+import NetworkShowcase from "./components/Network/NetworkShowcase";
+import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
 import {
   BrowserRouter as Router,
   Route,
@@ -35,10 +39,18 @@ function App() {
         <Navbar />
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
+          <Route path="/" element={
+            <>
+              <Hero />
+              <About />
+              <CareerHighlights />
+              <ProjectShowcase />
+              <PublicationGallery />
+              <AcademicJourney />
+              <NetworkShowcase />
+              <Contact />
+            </>
+          } />
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />

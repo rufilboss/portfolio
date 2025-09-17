@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+/* Professional Portfolio - App Styles */
+
+/* Typewriter styling */
+.typewriter-wrapper {
+  color: var(--text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 1.5rem !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.typewriter-cursor {
+  color: var(--primary-navy) !important;
+  font-weight: 500 !important;
+  font-size: 1.5rem !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Logo styling */
+.logo {
+  height: 40px !important;
+  width: auto !important;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navbar toggle styling */
+.navbar-toggler {
+  border: none !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navbar-toggler span {
+  display: block !important;
+  background-color: var(--primary-navy) !important;
+  height: 3px !important;
+  width: 25px !important;
+  margin: 4px 0 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 2px !important;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px) !important;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(2) {
+  opacity: 0 !important;
+}
+
+.navbar-toggler:not(.collapsed) span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px) !important;
+}
+
+/* Ensure proper spacing */
+.hero {
+  padding-top: 80px !important;
+}
+
+/* Fix any Bootstrap conflicts */
+.container-fluid {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem !important;
+  }
+  
+  .typewriter-wrapper,
+  .typewriter-cursor {
+    font-size: 1.2rem !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem !important;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .typewriter-wrapper,
+  .typewriter-cursor {
+    font-size: 1rem !important;
   }
 }

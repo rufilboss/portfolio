@@ -1,5 +1,13 @@
-# Personal Portfolio  [**Live Website**](https://rufilboss.me)
+# Personal Portfolio — Ilyas Rufai
 
-My Official Portfolio Site Built With HTML, CSS & JavaScript.
+A modern, responsive single‑page portfolio built with React and Bootstrap. It showcases Career Highlights, Projects, Publications, Academic Journey, Network, and Contact sections with a professional, accessible UI.
 
-cc [**Soumyajit Behera**](https://github.com/soumyajit4419)
+## Tech Stack
+
+- React 18, React Router
+- React‑Bootstrap, Bootstrap 5
+- react‑icons, react‑github‑calendar
+
+## License
+
+This project is for personal portfolio use. All rights reserved.
