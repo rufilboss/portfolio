@@ -3415,3 +3415,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.75rem 0 !important;
   }
 }
+
+/* Scoped: position RES initials around the avatar without affecting other elements */
+.avatar-initials { position: absolute !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; pointer-events: none !important; }
+.avatar-initials .chip { position: absolute !important; background: rgba(0,0,0,0.55) !important; color: #ffd166 !important; border: 1px solid rgba(255,255,255,0.25) !important; padding: 6px 10px !important; border-radius: 999px !important; font-weight: 700 !important; font-size: 0.9rem !important; letter-spacing: 1px !important; box-shadow: var(--shadow-sm) !important; backdrop-filter: blur(4px) !important; -webkit-backdrop-filter: blur(4px) !important; }
+/* R: top-left inside */
+.avatar-initials .chip:nth-child(1) { top: 12% !important; left: 12% !important; }
+/* E: middle-right */
+.avatar-initials .chip:nth-child(2) { top: 50% !important; right: 12% !important; transform: translateY(-50%) !important; }
+/* S: bottom-left */
+.avatar-initials .chip:nth-child(3) { bottom: 12% !important; left: 12% !important; }

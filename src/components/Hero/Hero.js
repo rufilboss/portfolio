@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import avatar from '../../Assets/avatar.svg';
+import profile from '../../Assets/rufilboss.jpg';
 
 const Hero = () => {
   const [currentRole, setCurrentRole] = useState(0);
@@ -64,7 +65,17 @@ const Hero = () => {
           
           <Col lg={6} className="hero-visual">
             <div className="avatar-container">
-              <img src={avatar} alt="Ilyas Rufai" className="hero-avatar" />
+              <img
+                src={profile}
+                onError={(e) => { e.currentTarget.src = avatar; }}
+                alt="Ilyas Rufai"
+                className="hero-avatar"
+              />
+              <div className="avatar-initials" aria-hidden="true">
+                <span className="chip">R</span>
+                <span className="chip">E</span>
+                <span className="chip">S</span>
+              </div>
               <div className="floating-elements">
                 <div className="floating-icon research">🔬</div>
                 <div className="floating-icon code">💻</div>
