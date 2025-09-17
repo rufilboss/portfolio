@@ -95,8 +95,8 @@ const ProjectShowcase = () => {
       title: 'Agricultural Data Visualization',
       description: 'Interactive data visualization platform for agricultural research data.',
       techStack: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
-      status: 'completed',
-      screenshot: 'Images/malariadetect.png',
+      status: 'in-development',
+      screenshot: 'Images/agriculturaldatavisualization.png',
       githubUrl: 'https://github.com/rufilboss/agri-data-viz',
       liveUrl: 'https://agri-viz.example.com',
       featured: false
