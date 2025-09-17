@@ -365,8 +365,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto !important;
 }
 
-/* Research Timeline */
-.research-timeline-section {
+/* Career Highlights (formerly Research Timeline) */
+.career-highlights-section {
   padding: 6rem 0 !important;
   background: var(--gray-50) !important;
 }

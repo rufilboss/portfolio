@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero/Hero";
-import ResearchTimeline from "./components/Research/ResearchTimeline";
+import CareerHighlights from "./components/Career/CareerHighlights";
 import About from "./components/About/About";
 import ProjectShowcase from "./components/Projects/ProjectShowcase";
 import PublicationGallery from "./components/Publications/PublicationGallery";
@@ -43,7 +43,7 @@ function App() {
             <>
               <Hero />
               <About />
-              <ResearchTimeline />
+              <CareerHighlights />
               <ProjectShowcase />
               <PublicationGallery />
               <AcademicJourney />
