@@ -95,6 +95,10 @@ function About() {
                   Beyond my technical work, I'm committed to continuous learning, collaboration, and contributing to projects that have a positive impact on society. Whether it's through research, software development, CAD design, or knowledge sharing, I strive to be part of solutions that matter.
                 </p>
 
+                <p>
+                  Lastly, I play <span className="highlight">Chess</span> for fun!
+                </p>
+
               </div>
             </div>
           </div>
