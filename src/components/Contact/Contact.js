@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm, ValidationError } from '@formspree/react';
+import { Toast, ToastContainer } from 'react-bootstrap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,12 +12,26 @@ const Contact = () => {
   });
   const [state, handleSubmit] = useForm('mvgbjeqn');
 
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastVariant, setToastVariant] = useState('success');
+  const [toastMessage, setToastMessage] = useState('');
+
   useEffect(() => {
     if (state.succeeded) {
-      alert('Thank you for your message! I\'ll get back to you soon.');
+      setToastVariant('success');
+      setToastMessage("Thank you for your message! I'll get back to you soon.");
+      setToastOpen(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
     }
   }, [state.succeeded]);
+
+  useEffect(() => {
+    if (!state.submitting && !state.succeeded && state.errors && state.errors.length > 0) {
+      setToastVariant('danger');
+      setToastMessage('Sorry, something went wrong. Please check the form and try again.');
+      setToastOpen(true);
+    }
+  }, [state.submitting, state.succeeded, state.errors]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +43,17 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact-section">
+      <ToastContainer position="top-end" className="p-3" containerPosition="fixed">
+        <Toast bg={toastVariant} onClose={() => setToastOpen(false)} show={toastOpen} delay={5000} autohide>
+          <Toast.Header closeButton>
+            <strong className="me-auto">{toastVariant === 'success' ? 'Message sent' : 'Submission error'}</strong>
+          </Toast.Header>
+          <Toast.Body className={toastVariant === 'success' ? 'text-white' : 'text-white'}>
+            {toastMessage}
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
       <Container>
         <div className="section-header">
           <h2 className="section-title">Get In Touch</h2>
