@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useForm, ValidationError } from '@formspree/react';
+import { Toast, ToastContainer } from 'react-bootstrap';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,28 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [state, handleSubmit] = useForm('mvgbjeqn');
+
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastVariant, setToastVariant] = useState('success');
+  const [toastMessage, setToastMessage] = useState('');
+
+  useEffect(() => {
+    if (state.succeeded) {
+      setToastVariant('success');
+      setToastMessage("Thank you for your message! I'll get back to you soon.");
+      setToastOpen(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }
+  }, [state.succeeded]);
+
+  useEffect(() => {
+    if (!state.submitting && !state.succeeded && state.errors && state.errors.length > 0) {
+      setToastVariant('danger');
+      setToastMessage('Sorry, something went wrong. Please check the form and try again.');
+      setToastOpen(true);
+    }
+  }, [state.submitting, state.succeeded, state.errors]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,16 +41,19 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
-
   return (
     <section id="contact" className="contact-section">
+      <ToastContainer position="top-end" className="p-3" containerPosition="fixed">
+        <Toast bg={toastVariant} onClose={() => setToastOpen(false)} show={toastOpen} delay={5000} autohide>
+          <Toast.Header closeButton>
+            <strong className="me-auto">{toastVariant === 'success' ? 'Message sent' : 'Submission error'}</strong>
+          </Toast.Header>
+          <Toast.Body className={toastVariant === 'success' ? 'text-white' : 'text-white'}>
+            {toastMessage}
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
+
       <Container>
         <div className="section-header">
           <h2 className="section-title">Get In Touch</h2>
@@ -109,6 +136,7 @@ const Contact = () => {
                     placeholder="your.email@example.com"
                     required
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -135,10 +163,11 @@ const Contact = () => {
                     className="flex-grow-1"
                     required
                   />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </Form.Group>
 
-                <Button type="submit" className="btn-primary w-100 mt-auto">
-                  Send Message
+                <Button type="submit" className="btn-primary w-100 mt-auto" disabled={state.submitting}>
+                  {state.submitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </Form>
             </div>
