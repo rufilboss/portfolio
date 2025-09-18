@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,14 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [state, handleSubmit] = useForm('mvgbjeqn');
+
+  useEffect(() => {
+    if (state.succeeded) {
+      alert('Thank you for your message! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }
+  }, [state.succeeded]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -15,14 +24,6 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
@@ -109,6 +110,7 @@ const Contact = () => {
                     placeholder="your.email@example.com"
                     required
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
@@ -135,10 +137,11 @@ const Contact = () => {
                     className="flex-grow-1"
                     required
                   />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </Form.Group>
 
-                <Button type="submit" className="btn-primary w-100 mt-auto">
-                  Send Message
+                <Button type="submit" className="btn-primary w-100 mt-auto" disabled={state.submitting}>
+                  {state.submitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </Form>
             </div>
