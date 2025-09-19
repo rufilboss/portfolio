@@ -7,6 +7,18 @@ const ProjectShowcase = () => {
       const projects = [
     {
       id: 1,
+      category: 'Web Development',
+      title: 'Attendify',
+      description: 'Attendify is an attendance management app for tertiary institutions.',
+      techStack: ['React', 'TypeScript', 'Python', 'CSS', 'AWS', 'JWT'],
+      status: 'in-development',
+      screenshot: 'Images/attendify.png',
+      githubUrl: 'https://github.com/attendify',
+      liveUrl: 'https://attendifier.netlify.app/',
+      featured: true
+    },
+    {
+      id: 2,
       category: 'DevOps',
       title: 'Real-Time Log Processing API',
       description: 'This project is a Real-Time Log Processing API built with FastAPI, Celery, Redis, and MongoDB. It processes incoming log data asynchronously, stores them in a MongoDB database, and performs background tasks (e.g., filtering sensitive information) using Celery workers. The infrastructure is containerized with Docker, making it highly scalable and suitable for real-world applications such as centralized log processing,fraud detection, and asynchronous data processing.',
@@ -18,7 +30,7 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 2,
+      id: 3,
       category: 'Web Development',
       title: 'LOGIQ',
       description: 'LogIQ is an open-source web performance monitoring tool that provides a comprehensive analysis of website performance on both desktop and mobile devices. With LogIQ, website owners and developers can gain deep insights into their websites performance and take actions to improve the speed and user experience.',
@@ -30,7 +42,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: 3,
+      id: 4,
       category: 'Research',
       title: 'Smart Agricultural IoT System',
       description: 'Comprehensive IoT monitoring system for crop health using sensors, machine learning, and real-time data analysis.',
@@ -42,7 +54,7 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 4,
+      id: 5,
       category: 'Web Development',
       title: 'Malaria Detect',
       description: 'Malaria Detect is dedicated to leveraging artificial intelligence to provide rapid, accurate, and accessible malaria diagnosis.',
@@ -54,7 +66,7 @@ const ProjectShowcase = () => {
       featured: true
     },
     {
-      id: 5,
+      id: 6,
       category: 'Research',
       title: 'Civil Engineering Data Analytics',
       description: 'Data analysis platform for civil engineering projects with predictive modeling.',
@@ -66,7 +78,7 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 6,
+      id: 7,
       category: 'Web Development',
       title: 'GrowCycle',
       description: 'A comprehensive web application that helps users create, track, and optimize their personal productivity systems with advanced analytics, notifications, and a digital whiteboard.',
@@ -78,7 +90,7 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 6,
+      id: 8,
       category: 'Web Development',
       title: 'Danjuma Empire',
       description: 'Built a landing page website for a company in Nigeria that deals with real estate, automobile and construction.',
@@ -90,7 +102,7 @@ const ProjectShowcase = () => {
       featured: false
     },
     {
-      id: 7,
+      id: 9,
       category: 'Web Development',
       title: 'Agricultural Data Visualization',
       description: 'Interactive data visualization platform for agricultural research data.',
