@@ -15,9 +15,9 @@ const AcademicJourney = () => {
       ]
     },
     {
-      year: '2024',
+      year: '2023',
       title: 'Agricultural & Biosystems Engineering',
-      institution: 'University of Agriculture',
+      institution: 'University of Ilorin',
       description: 'Pursuing comprehensive engineering education with focus on agricultural technology and biosystems.',
       achievements: [
         'Precision Agriculture Studies',
