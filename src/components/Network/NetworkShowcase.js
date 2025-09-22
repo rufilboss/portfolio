@@ -5,11 +5,18 @@ import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGoodreads } from 'react-
 const NetworkShowcase = () => {
   const connections = [
     {
-      name: 'Engr. Yusuf',
+      name: 'Prof. K. O. Yusuf',
+      role: 'Agricultural Technology Expert',
+      institution: 'AgriTech Research Center',
+      field: 'Precision Agriculture',
+      type: 'Academic'
+    },
+    {
+      name: 'Engr. A. K. Yusuf',
       role: 'Research Supervisor',
       institution: 'Civil Engineering Lab',
       field: 'Smart Infrastructure',
-      type: 'Academic'
+      type: 'Research'
     },
     {
       name: 'Yusuf Adeyemo',
@@ -19,15 +26,20 @@ const NetworkShowcase = () => {
       type: 'Professional'
     },
     {
-      name: 'Prof. K O Yusuf',
-      role: 'Agricultural Technology Expert',
-      institution: 'AgriTech Research Center',
-      field: 'Precision Agriculture',
+      name: 'Engr. Sanusi',
+      role: 'Research Supervisor',
+      institution: 'Central Research Lab',
+      field: 'Sustainable Engineering',
       type: 'Research'
     }
   ];
 
   const communities = [
+    {
+      name: 'AWS Cloud Club Unilorin',
+      role: 'Co-Captain',
+      description: 'Working with the team to teach and increase awareness about AWS cloud services.'
+    },
     {
       name: 'DevOps Community',
       role: 'Active Member',
@@ -117,13 +129,13 @@ const NetworkShowcase = () => {
           <Row>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">100+</span>
+                <span className="stat-number">10k+</span>
                 <span className="stat-label">Professional Connections</span>
               </div>
             </Col>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">5+</span>
+                <span className="stat-number">2+</span>
                 <span className="stat-label">Research Collaborations</span>
               </div>
             </Col>
@@ -135,7 +147,7 @@ const NetworkShowcase = () => {
             </Col>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">15k+</span>
+                <span className="stat-number">200k+</span>
                 <span className="stat-label">Network Reach</span>
               </div>
             </Col>
