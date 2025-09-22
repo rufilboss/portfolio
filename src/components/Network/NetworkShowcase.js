@@ -129,13 +129,13 @@ const NetworkShowcase = () => {
           <Row>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">10+</span>
+                <span className="stat-number">10k+</span>
                 <span className="stat-label">Professional Connections</span>
               </div>
             </Col>
             <Col md={3}>
               <div className="stat-item">
-                <span className="stat-number">3+</span>
+                <span className="stat-number">2+</span>
                 <span className="stat-label">Research Collaborations</span>
               </div>
             </Col>
