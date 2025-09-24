@@ -99,7 +99,7 @@ const ProjectShowcase = () => {
       screenshot: 'Images/danjumaempire.png',
       githubUrl: 'https://github.com/Danjuma-Empire/landingpage',
       liveUrl: 'https://danjumaempire.netlify.app/',
-      featured: false
+      featured: true
     },
     {
       id: 9,
