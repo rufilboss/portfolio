@@ -84,7 +84,7 @@ const ProjectShowcase = () => {
       description: 'A comprehensive web application that helps users create, track, and optimize their personal productivity systems with advanced analytics, notifications, and a digital whiteboard.',
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Python', 'PostgreSQL', 'JWT', 'FastAPI', 'Bash'],
       status: 'in-development',
-      screenshot: 'Images/malariadetect.png',
+      screenshot: 'Images/growcycle.png',
       githubUrl: 'https://github.com/rufilboss/GrowCycle',
       liveUrl: 'https://growcycle.netlify.app/',
       featured: false
