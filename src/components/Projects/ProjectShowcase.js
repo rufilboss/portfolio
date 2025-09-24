@@ -84,7 +84,7 @@ const ProjectShowcase = () => {
       description: 'A comprehensive web application that helps users create, track, and optimize their personal productivity systems with advanced analytics, notifications, and a digital whiteboard.',
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Python', 'PostgreSQL', 'JWT', 'FastAPI', 'Bash'],
       status: 'in-development',
-      screenshot: 'Images/malariadetect.png',
+      screenshot: 'Images/growcycle.png',
       githubUrl: 'https://github.com/rufilboss/GrowCycle',
       liveUrl: 'https://growcycle.netlify.app/',
       featured: false
@@ -99,7 +99,7 @@ const ProjectShowcase = () => {
       screenshot: 'Images/danjumaempire.png',
       githubUrl: 'https://github.com/Danjuma-Empire/landingpage',
       liveUrl: 'https://danjumaempire.netlify.app/',
-      featured: false
+      featured: true
     },
     {
       id: 9,
