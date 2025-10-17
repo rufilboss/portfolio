@@ -74,7 +74,7 @@ const ProjectShowcase = () => {
       status: 'in-development',
       screenshot: 'Images/malariadetect.png',
       githubUrl: 'https://github.com/rufilboss/civil-engineering-analytics',
-      liveUrl: 'https://civil-analytics-demo.example.com',
+      liveUrl: 'https://civil-analytics-demo.netlify.app',
       featured: false
     },
     {
