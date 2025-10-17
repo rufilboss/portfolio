@@ -50,7 +50,7 @@ const ProjectShowcase = () => {
       status: 'in-development',
       screenshot: 'Images/smartagricultureiot.png',
       githubUrl: 'https://github.com/rufilboss/smart-agriculture-iot',
-      liveUrl: 'https://agri-iot-demo.example.com',
+      liveUrl: 'https://agri-iot-demo.netlify.app',
       featured: false
     },
     {
