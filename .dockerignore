@@ -12,3 +12,4 @@ Dockerfile
 .env.test.local
 .env.production.local
 .eslintcache
+README.md
