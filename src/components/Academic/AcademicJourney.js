@@ -15,17 +15,6 @@ const AcademicJourney = () => {
       ]
     },
     {
-      year: '2025',
-      title: 'Advanced Research Methods',
-      institution: 'University Research Lab',
-      description: 'Currently engaged in advanced research methodologies and interdisciplinary collaboration.',
-      achievements: [
-        'Research Lab Collaboration',
-        'Publication Preparation',
-        'Cross-disciplinary Projects'
-      ]
-    },
-    {
       year: '2023',
       title: 'Agricultural & Biosystems Engineering',
       institution: 'University of Ilorin',
