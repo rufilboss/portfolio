@@ -1,5 +1,5 @@
 # Build stage
-FROM node:16.13.2-alpine as build
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY . .
 RUN yarn build
 
 # Release step
-FROM nginx:1.21.5-alpine as release
+FROM nginx:2.0.0-alpine AS release
 
 COPY --from=build /app/out /usr/share/nginx/html/
 
