@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import CADViewerModal from '../CADViewer/CADViewerModal';
 
 const ProjectShowcase = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [cadViewer, setCadViewer] = useState({ show: false, filePath: '', fileName: '' });
 
       const projects = [
     {
@@ -112,6 +114,20 @@ const ProjectShowcase = () => {
       githubUrl: 'https://github.com/rufilboss/agri-data-viz',
       liveUrl: 'https://agri-viz.example.com',
       featured: false
+    },
+    {
+      id: 10,
+      category: 'CAD Design',
+      title: 'Smart Irrigation System Design',
+      description: '3D CAD design for automated irrigation system with sensor integration and water flow optimization.',
+      techStack: ['AutoCAD', 'Revit', 'Inventor', 'Civil 3D'],
+      status: 'completed',
+      screenshot: 'Images/cad-irrigation-system.png',
+      githubUrl: 'https://github.com/rufilboss/cad-designs',
+      liveUrl: 'https://github.com/rufilboss/cad-designs',
+      cadFile: '3d-files/irrigation-system.stl',
+      cadFileName: 'Smart Irrigation System.stl',
+      featured: true
     }
   ];
 
@@ -120,7 +136,8 @@ const ProjectShowcase = () => {
     { id: 'featured', label: 'Featured Projects' },
     { id: 'DevOps', label: 'DevOps' },
     { id: 'Research', label: 'Research' },
-    { id: 'Web Development', label: 'Web Development' }
+    { id: 'Web Development', label: 'Web Development' },
+    { id: 'CAD Design', label: 'CAD Design' }
   ];
 
   const filteredProjects = activeFilter === 'all' 
@@ -139,6 +156,14 @@ const ProjectShowcase = () => {
 
   const handleLiveClick = (url) => {
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleCADView = (filePath, fileName) => {
+    setCadViewer({ show: true, filePath, fileName });
+  };
+
+  const handleCADClose = () => {
+    setCadViewer({ show: false, filePath: '', fileName: '' });
   };
 
   return (
@@ -172,6 +197,8 @@ const ProjectShowcase = () => {
                     src={project.screenshot} 
                     alt={project.title}
                     className="project-screenshot"
+                    onClick={() => project.cadFile && handleCADView(project.cadFile, project.cadFileName)}
+                    style={{ cursor: project.cadFile ? 'pointer' : 'default' }}
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
@@ -190,6 +217,11 @@ const ProjectShowcase = () => {
                     {project.featured && (
                       <div className="featured-badge">
                         <span>⭐ Featured</span>
+                      </div>
+                    )}
+                    {project.cadFile && (
+                      <div className="cad-view-badge">
+                        <span>🔍 3D View</span>
                       </div>
                     )}
                   </div>
@@ -214,6 +246,14 @@ const ProjectShowcase = () => {
                     >
                       <span>💻</span> Source Code
                     </button>
+                    {project.cadFile && (
+                      <button 
+                        className="btn-cad"
+                        onClick={() => handleCADView(project.cadFile, project.cadFileName)}
+                      >
+                        <span>🔍</span> 3D View
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -250,6 +290,13 @@ const ProjectShowcase = () => {
           </Row>
         </div>
       </Container>
+
+      <CADViewerModal
+        show={cadViewer.show}
+        onHide={handleCADClose}
+        filePath={cadViewer.filePath}
+        fileName={cadViewer.fileName}
+      />
     </section>
   );
 };
