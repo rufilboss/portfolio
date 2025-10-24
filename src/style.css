@@ -3399,6 +3399,61 @@ h1, h2, h3, h4, h5, h6 {
 /* Slightly shift navbar logo to the right for better balance */
 .navbar .navbar-logo { margin-left: 8px !important; }
 
+/* CAD Viewer Styles */
+.cad-view-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.btn-cad {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.btn-cad:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-cad:active {
+  transform: translateY(0);
+}
+
+.project-screenshot {
+  transition: transform 0.3s ease;
+}
+
+.project-screenshot:hover {
+  transform: scale(1.02);
+}
+
+/* CAD Viewer Modal Backdrop */
+.cad-viewer-modal .modal-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 /* Mobile navbar improvements: center collapsed menu and links */
 @media (max-width: 991.98px) {
   .navbar .navbar-collapse {

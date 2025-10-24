@@ -1,0 +1,83 @@
+/* CAD Viewer Modal Styles */
+.cad-viewer-modal .modal-dialog {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.cad-viewer-modal .modal-content {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.cad-viewer-modal .modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  border-bottom: none;
+}
+
+.cad-viewer-modal .modal-header .btn-close {
+  filter: invert(1);
+}
+
+.cad-viewer-container {
+  position: relative;
+  background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.cad-viewer-canvas {
+  display: block;
+  cursor: grab;
+}
+
+.cad-viewer-canvas:active {
+  cursor: grabbing;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 249, 250, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.error-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 249, 250, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.cad-viewer-modal .modal-footer {
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cad-viewer-modal .modal-dialog {
+    max-width: 95vw;
+    margin: 10px;
+  }
+  
+  .cad-viewer-canvas {
+    height: 400px !important;
+  }
+}
