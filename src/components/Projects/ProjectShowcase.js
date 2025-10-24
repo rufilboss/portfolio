@@ -234,25 +234,38 @@ const ProjectShowcase = () => {
 
 
                   <div className="project-actions">
-                    <button 
-                      className="btn-primary"
-                      onClick={() => handleLiveClick(project.liveUrl)}
-                    >
-                      <span>🌐</span> Live Demo
-                    </button>
-                    <button 
-                      className="btn-secondary"
-                      onClick={() => handleGitHubClick(project.githubUrl)}
-                    >
-                      <span>💻</span> Source Code
-                    </button>
-                    {project.cadFile && (
-                      <button 
-                        className="btn-cad"
-                        onClick={() => handleCADView(project.cadFile, project.cadFileName)}
-                      >
-                        <span>🔍</span> 3D View
-                      </button>
+                    {project.cadFile ? (
+                      // For CAD projects: 3D View + Source Code
+                      <>
+                        <button 
+                          className="btn-primary"
+                          onClick={() => handleCADView(project.cadFile, project.cadFileName)}
+                        >
+                          <span>🔍</span> 3D View
+                        </button>
+                        <button 
+                          className="btn-secondary"
+                          onClick={() => handleGitHubClick(project.githubUrl)}
+                        >
+                          <span>💻</span> Source Code
+                        </button>
+                      </>
+                    ) : (
+                      // For regular projects: Live Demo + Source Code
+                      <>
+                        <button 
+                          className="btn-primary"
+                          onClick={() => handleLiveClick(project.liveUrl)}
+                        >
+                          <span>🌐</span> Live Demo
+                        </button>
+                        <button 
+                          className="btn-secondary"
+                          onClick={() => handleGitHubClick(project.githubUrl)}
+                        >
+                          <span>💻</span> Source Code
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
