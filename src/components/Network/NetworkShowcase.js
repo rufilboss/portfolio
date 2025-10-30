@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGoodreads } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaGoodreads, FaResearchgate } from 'react-icons/fa';
 
 const NetworkShowcase = () => {
   const connections = [
@@ -80,6 +80,9 @@ const NetworkShowcase = () => {
           </a>
           <a href="https://goodreads.com/rufilboss" target="_blank" rel="noopener noreferrer" className="chip goodreads" aria-label="Goodreads">
             <FaGoodreads /> <span>Goodreads</span>
+          </a>
+          <a href="https://researchgate.net/profile/Ilyas-Rufai" target="_blank" rel="noopener noreferrer" className="chip researchgate" aria-label="Researchgate">
+            <FaResearchgate /> <span>Researchgate</span>
           </a>
           <a href="mailto:rufilboss@gmail.com" className="chip email" aria-label="Email">
             <FaEnvelope /> <span>Email</span>
