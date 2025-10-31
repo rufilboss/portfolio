@@ -128,6 +128,18 @@ const ProjectShowcase = () => {
       cadFile: '3d-files/irrigation-system.stl',
       cadFileName: 'Smart Irrigation System.stl',
       featured: true
+    },
+    {
+      id: 11,
+      category: 'Web Development',
+      title: 'To DO List',
+      description: 'A simple to do list app built with HTML, CSS and Python.',
+      techStack: ['AutoCAD', 'Revit', 'Inventor', 'Civil 3D'],
+      status: 'completed',
+      screenshot: 'Images/todolist.png',
+      githubUrl: 'https://github.com/rufilboss/Todo_List_App',
+      liveUrl: 'https://github.com/rufilboss/Todo_List_App',
+      featured: false
     }
   ];
 
