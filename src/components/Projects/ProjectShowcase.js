@@ -26,7 +26,7 @@ const ProjectShowcase = () => {
       description: 'This project is a Real-Time Log Processing API built with FastAPI, Celery, Redis, and MongoDB. It processes incoming log data asynchronously, stores them in a MongoDB database, and performs background tasks (e.g., filtering sensitive information) using Celery workers. The infrastructure is containerized with Docker, making it highly scalable and suitable for real-world applications such as centralized log processing,fraud detection, and asynchronous data processing.',
       techStack: ['FastAPI', 'Celery', 'Redis', 'MongoDB', 'Docker'],
       status: 'completed',
-      screenshot: 'Images/realtimelogprocessingapi.png',
+      screenshot: 'Images/realtimelogapi.png',
       githubUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
       liveUrl: 'https://github.com/rufilboss/real-time-log-processing-api',
       featured: false
