@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CADViewerModal from '../CADViewer/CADViewerModal';
+import ImagePreviewModal from './ImagePreviewModal';
 
 const ProjectShowcase = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [cadViewer, setCadViewer] = useState({ show: false, filePath: '', fileName: '' });
+  const [imageViewer, setImageViewer] = useState({ show: false, project: null });
 
       const projects = [
     {
@@ -178,6 +180,14 @@ const ProjectShowcase = () => {
     setCadViewer({ show: false, filePath: '', fileName: '' });
   };
 
+  const handleImageView = (project) => {
+    setImageViewer({ show: true, project });
+  };
+
+  const handleImageClose = () => {
+    setImageViewer({ show: false, project: null });
+  };
+
   return (
     <section id="projects" className="project-showcase-section">
       <Container>
@@ -209,8 +219,8 @@ const ProjectShowcase = () => {
                     src={project.screenshot} 
                     alt={project.title}
                     className="project-screenshot"
-                    onClick={() => project.cadFile && handleCADView(project.cadFile, project.cadFileName)}
-                    style={{ cursor: project.cadFile ? 'pointer' : 'default' }}
+                    onClick={() => handleImageView(project)}
+                    style={{ cursor: 'pointer' }}
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
@@ -315,6 +325,13 @@ const ProjectShowcase = () => {
           </Row>
         </div>
       </Container>
+
+      <ImagePreviewModal
+        show={imageViewer.show}
+        project={imageViewer.project}
+        onHide={handleImageClose}
+        onOpenCAD={handleCADView}
+      />
 
       <CADViewerModal
         show={cadViewer.show}
