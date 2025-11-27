@@ -3454,6 +3454,61 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(4px);
 }
 
+/* Image Preview Modal */
+.image-preview-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.image-preview-modal .modal-content {
+  border-radius: 16px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.image-preview-modal .modal-header {
+  border-bottom: none;
+}
+
+.image-preview-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.image-preview-wrapper {
+  background: #0e0e0e;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.image-preview-img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.image-preview-description {
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.image-preview-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.image-preview-tech span {
+  background: rgba(102, 126, 234, 0.12);
+  color: #667eea;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
 /* Mobile navbar improvements: center collapsed menu and links */
 @media (max-width: 991.98px) {
   .navbar .navbar-collapse {
