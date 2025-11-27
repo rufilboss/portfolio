@@ -4,6 +4,12 @@ import { Container } from 'react-bootstrap';
 const CareerHighlights = () => {
   const timelineData = [
     {
+      year: 'Nov 2025',
+      title: 'AWS Certified Cloud Practitioner',
+      description: 'Got certified as a AWS Certified Cloud Practitioner',
+      achievements: ['Cloud Computing', 'AWS', 'Cloud', 'Certified']
+    },
+    {
       year: 'Sep 2025',
       title: 'Unilorin Central Research Lab',
       description: 'Joined the Unilorin Central Research Lab to explore sustainable infrastructure solutions and smart city technologies.',
@@ -20,6 +26,12 @@ const CareerHighlights = () => {
       title: 'DevOps Engineer at Cloudsania',
       description: 'Joined Cloudsania as a DevOps Engineer to explore sustainable infrastructure solutions and automation.',
       achievements: ['Cloud Computing', 'Terraform', 'Docker', 'Kubernetes', 'AWS', 'Automation']
+    },
+    {
+      year: 'May 2025',
+      title: 'Terraform Assocaite Certified',
+      description: 'Got certified as a Terraform Associate person',
+      achievements: ['IaC', 'Terraform', 'Infrastructure', 'Automation']
     },
     {
       year: 'June 2023 - Oct 2024',
