@@ -51,8 +51,8 @@ const PublicationGallery = () => {
         if (payload.kind === 'json') {
           const jsonItems = payload.data.items || [];
           parsedItems = jsonItems.map((item, idx) => {
-            const title = item.title || 'Untitled';
-            const rawDescription = (item.description || '').replace(/<[^>]+>/g, '');
+            const title = decodeHtmlEntities(item.title || 'Untitled');
+            const rawDescription = decodeHtmlEntities((item.description || '').replace(/<[^>]+>/g, ''));
             const keywords = extractKeywords(title, rawDescription);
             const tags = (item.categories && item.categories.length ? item.categories : keywords);
             const readTime = item.readTime || item.read_time || estimateReadTime(rawDescription);
@@ -77,10 +77,10 @@ const PublicationGallery = () => {
           const doc = parser.parseFromString(xmlText, 'application/xml');
           const items = Array.from(doc.querySelectorAll('item'));
           parsedItems = items.map((item, idx) => {
-            const title = item.querySelector('title')?.textContent || 'Untitled';
-            const rawDescription = item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '';
+            const title = decodeHtmlEntities(item.querySelector('title')?.textContent || 'Untitled');
+            const rawDescription = decodeHtmlEntities(item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '');
             const keywords = extractKeywords(title, rawDescription);
-            const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean);
+            const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => decodeHtmlEntities(c.textContent)).filter(Boolean);
             const tags = tagsFound.length ? tagsFound : keywords;
             const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
             return {
@@ -109,6 +109,14 @@ const PublicationGallery = () => {
     }
 
     return parsedItems;
+  };
+
+  // Decode HTML entities (e.g., &amp; -> &, &quot; -> ")
+  const decodeHtmlEntities = (text) => {
+    if (!text) return '';
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = text;
+    return textarea.value;
   };
 
   const estimateReadTime = (text) => {
@@ -219,9 +227,9 @@ const PublicationGallery = () => {
         const posts = data.data?.publication?.posts?.edges?.map(e => e.node) || [];
         if (posts.length === 0) throw new Error('No posts found');
         return posts.map((post, idx) => {
-          const title = post.title || 'Untitled';
-          const description = post.brief || '';
-          const hashnodeTags = post.tags?.map(t => t.name) || [];
+          const title = decodeHtmlEntities(post.title || 'Untitled');
+          const description = decodeHtmlEntities(post.brief || '');
+          const hashnodeTags = post.tags?.map(t => decodeHtmlEntities(t.name)) || [];
           const keywords = extractKeywords(title, description);
           const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
           return {
@@ -247,10 +255,10 @@ const PublicationGallery = () => {
       const doc = parser.parseFromString(xmlText, 'application/xml');
       const items = Array.from(doc.querySelectorAll('item'));
       return items.map((item, idx) => {
-        const title = item.querySelector('title')?.textContent || 'Untitled';
-        const rawDescription = item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '';
+        const title = decodeHtmlEntities(item.querySelector('title')?.textContent || 'Untitled');
+        const rawDescription = decodeHtmlEntities(item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '');
         const keywords = extractKeywords(title, rawDescription);
-        const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean);
+        const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => decodeHtmlEntities(c.textContent)).filter(Boolean);
         const tags = tagsFound.length > 0 ? tagsFound.slice(0, 5) : keywords;
         const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
         return {
@@ -272,10 +280,10 @@ const PublicationGallery = () => {
     // Helper: Parse Hashnode JSON from RSS2JSON
     const parseHashnodeJSON = (items) => {
       return items.map((item, idx) => {
-        const title = item.title || 'Untitled';
-        const rawDescription = (item.description || '').replace(/<[^>]+>/g, '');
+        const title = decodeHtmlEntities(item.title || 'Untitled');
+        const rawDescription = decodeHtmlEntities((item.description || '').replace(/<[^>]+>/g, ''));
         const keywords = extractKeywords(title, rawDescription);
-        const tags = (item.categories && item.categories.length ? item.categories.slice(0, 5) : keywords);
+        const tags = (item.categories && item.categories.length ? item.categories.map(t => decodeHtmlEntities(t)).slice(0, 5) : keywords);
         return {
           id: `hashnode-${idx}-${item.guid || item.link || idx}`,
           title,
@@ -356,28 +364,61 @@ const PublicationGallery = () => {
         console.error('Hashnode fetch failed:', hashnodeResult.reason);
       }
 
-      const successes = results
-        .filter(r => r.status === 'fulfilled')
-        .map(r => r.value)
-        .flat();
+      // Get all articles from both sources
+      const substackArticles = substackResult.status === 'fulfilled' 
+        ? substackResult.value.map(item => ({ ...item, dateObj: item.date ? new Date(item.date) : new Date() }))
+        : [];
+      const hashnodeArticles = hashnodeResult.status === 'fulfilled'
+        ? hashnodeResult.value.map(item => ({ ...item, dateObj: item.date ? new Date(item.date) : new Date() }))
+        : [];
+
+      // Sort by date
+      substackArticles.sort((a, b) => b.dateObj - a.dateObj);
+      hashnodeArticles.sort((a, b) => b.dateObj - a.dateObj);
+
+      // Take first 7 from each
+      const substackSelected = substackArticles.slice(0, 7);
+      const hashnodeSelected = hashnodeArticles.slice(0, 7);
+
+      // Create a set of URLs already selected to avoid duplicates
+      const selectedUrls = new Set([
+        ...substackSelected.map(a => a.url),
+        ...hashnodeSelected.map(a => a.url)
+      ]);
+
+      // Get remaining articles from both sources (for blog posts)
+      const remainingArticles = [
+        ...substackArticles.slice(7),
+        ...hashnodeArticles.slice(7)
+      ].sort((a, b) => b.dateObj - a.dateObj);
+
+      // Filter out duplicates and get 5 blog posts
+      const blogPosts = remainingArticles
+        .filter(article => !selectedUrls.has(article.url))
+        .slice(0, 5)
+        .map(article => ({
+          ...article,
+          category: 'blog',
+          type: 'Blog Post'
+        }));
+
+      // Combine everything: 7 Substack + 7 Hashnode + 5 Blog + 1 Research = 20 total
+      const combined = [
+        ...substackSelected,
+        ...hashnodeSelected,
+        ...blogPosts
+      ].map(item => ({
+        ...item,
+        date: item.dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+      }));
 
       console.log('Fetched articles:', {
-        substack: substackResult.status === 'fulfilled' ? substackResult.value.length : 0,
-        hashnode: hashnodeResult.status === 'fulfilled' ? hashnodeResult.value.length : 0,
-        total: successes.length
+        substack: substackSelected.length,
+        hashnode: hashnodeSelected.length,
+        blog: blogPosts.length,
+        research: 1,
+        total: combined.length + 1
       });
-
-      const combined = successes
-        .map(item => ({
-          ...item,
-          dateObj: item.date ? new Date(item.date) : new Date()
-        }))
-        .sort((a, b) => b.dateObj - a.dateObj)
-        .slice(0, 10)
-        .map(item => ({
-          ...item,
-          date: item.dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
-        }));
 
       if (combined.length === 0) {
         setPublications(prev => prev.length ? prev : [researchPlaceholder]);
