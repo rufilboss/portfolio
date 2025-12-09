@@ -76,7 +76,7 @@ const PublicationGallery = () => {
             date: item.querySelector('pubDate')?.textContent || '',
             url: item.querySelector('link')?.textContent || '#',
             readTime: source === 'hashnode' ? '5-10 min read' : '4-8 min read',
-            tags: [],
+            tags: Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean),
             category: source === 'hashnode' ? 'technical' : 'newsletter',
             type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
             featured: false,
@@ -110,14 +110,33 @@ const PublicationGallery = () => {
   const fetchAll = useCallback(async () => {
     setLoading(true);
     setError(null);
+
+    const researchPlaceholder = {
+      id: 'researchgate-upcoming',
+      type: 'Research Paper',
+      title: 'Upcoming publication on ResearchGate',
+      description: 'A new research paper is coming soon. Stay tuned!',
+      date: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }),
+      readTime: 'Coming soon',
+      tags: ['Research', 'Engineering'],
+      category: 'research',
+      featured: true,
+      url: '#',
+      source: 'researchgate'
+    };
+
     try {
-      const [substackItems, hashnodeItems] = await Promise.all([
+      const results = await Promise.allSettled([
         fetchRSS(undefined, 'substack'),
         fetchRSS(undefined, 'hashnode')
       ]);
 
-      // Sort by date desc and keep top 10
-      const combined = [...substackItems, ...hashnodeItems]
+      const successes = results
+        .filter(r => r.status === 'fulfilled')
+        .map(r => r.value)
+        .flat();
+
+      const combined = successes
         .map(item => ({
           ...item,
           dateObj: item.date ? new Date(item.date) : new Date()
@@ -129,24 +148,15 @@ const PublicationGallery = () => {
           date: item.dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
         }));
 
-      // Add placeholder for research (upcoming)
-      const researchPlaceholder = {
-        id: 'researchgate-upcoming',
-        type: 'Research Paper',
-        title: 'Upcoming publication on ResearchGate',
-        description: 'A new research paper is coming soon. Stay tuned!',
-        date: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }),
-        readTime: 'Coming soon',
-        tags: ['Research', 'Engineering'],
-        category: 'research',
-        featured: true,
-        url: '#',
-        source: 'researchgate'
-      };
-
-      setPublications([researchPlaceholder, ...combined]);
+      if (combined.length === 0) {
+        setPublications(prev => prev.length ? prev : [researchPlaceholder]);
+        setError('Unable to load publications right now. Please try again later.');
+      } else {
+        setPublications([researchPlaceholder, ...combined]);
+      }
     } catch (err) {
       console.error('Error fetching publications:', err);
+      setPublications(prev => prev.length ? prev : [researchPlaceholder]);
       setError('Unable to load publications right now. Please try again later.');
     } finally {
       setLoading(false);

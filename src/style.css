@@ -631,10 +631,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .publication-card {
   background: var(--white) !important;
-  border: 1px solid var(--gray-200) !important;
+  border: 1px solid var(--primary) !important;
   border-radius: 1rem !important;
   box-shadow: var(--shadow-sm) !important;
-  transition: var(--transition) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
   height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -644,7 +644,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .publication-card:hover {
   box-shadow: var(--shadow-lg) !important;
-  transform: translateY(-2px) !important;
+  transform: translateY(-4px) !important;
+  border-color: var(--primary-dark) !important;
 }
 
 .publication-card.featured {
