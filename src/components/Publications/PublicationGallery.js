@@ -53,9 +53,12 @@ const PublicationGallery = () => {
           parsedItems = jsonItems.map((item, idx) => {
             const title = decodeHtmlEntities(item.title || 'Untitled');
             const rawDescription = decodeHtmlEntities((item.description || '').replace(/<[^>]+>/g, ''));
+            // Try to get full content for better read time estimate
+            const fullContent = decodeHtmlEntities((item.content || item['content:encoded'] || item.description || '').replace(/<[^>]+>/g, ''));
             const keywords = extractKeywords(title, rawDescription);
             const tags = (item.categories && item.categories.length ? item.categories : keywords);
-            const readTime = item.readTime || item.read_time || estimateReadTime(rawDescription);
+            // Use actual read time if available, otherwise estimate from full content or description
+            const readTime = normalizeReadTime(item.readTime || item.read_time) || estimateReadTime(fullContent || rawDescription);
             return {
               id: `${source}-${idx}-${item.guid || item.link || idx}`,
               title,
@@ -79,10 +82,14 @@ const PublicationGallery = () => {
           parsedItems = items.map((item, idx) => {
             const title = decodeHtmlEntities(item.querySelector('title')?.textContent || 'Untitled');
             const rawDescription = decodeHtmlEntities(item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '');
+            // Try to get full content for better read time estimate
+            const contentEncoded = item.querySelector('content\\:encoded')?.textContent || item.querySelector('content')?.textContent || '';
+            const fullContent = decodeHtmlEntities(contentEncoded.replace(/<[^>]+>/g, '') || rawDescription);
             const keywords = extractKeywords(title, rawDescription);
             const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => decodeHtmlEntities(c.textContent)).filter(Boolean);
             const tags = tagsFound.length ? tagsFound : keywords;
-            const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
+            // Use actual read time if available, otherwise estimate from full content
+            const readTime = normalizeReadTime(item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent) || estimateReadTime(fullContent);
             return {
               id: `${source}-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
               title,
@@ -119,10 +126,24 @@ const PublicationGallery = () => {
     return textarea.value;
   };
 
+  // Normalize read time to a number (handles strings like "5 min" or "5")
+  const normalizeReadTime = (readTime) => {
+    if (!readTime) return null;
+    if (typeof readTime === 'number') return Math.max(1, Math.round(readTime));
+    // Extract number from string like "5 min" or "5"
+    const match = String(readTime).match(/\d+/);
+    return match ? Math.max(1, parseInt(match[0], 10)) : null;
+  };
+
+  // Estimate read time based on word count (250 words per minute average reading speed)
   const estimateReadTime = (text) => {
-    const words = text ? text.trim().split(/\s+/).length : 0;
-    if (!words) return '';
-    return Math.max(1, Math.round(words / 200));
+    if (!text || !text.trim()) return 1;
+    const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+    if (words === 0) return 1;
+    // Use 250 words per minute (more realistic average)
+    const minutes = words / 250;
+    // Round to nearest minute, minimum 1 minute
+    return Math.max(1, Math.round(minutes));
   };
 
   // Extract top 5 keywords from title + description
@@ -232,13 +253,16 @@ const PublicationGallery = () => {
           const hashnodeTags = post.tags?.map(t => decodeHtmlEntities(t.name)) || [];
           const keywords = extractKeywords(title, description);
           const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
+          // Use Hashnode's actual read time if available, otherwise estimate
+          const readTime = normalizeReadTime(post.readTimeInMinutes) || estimateReadTime(description);
+          
           return {
             id: `hashnode-${idx}-${post.slug}`,
             title,
             description: description.slice(0, 200),
             date: post.publishedAt || new Date().toISOString(),
             url: `https://rufilboss.hashnode.dev/${post.slug}`,
-            readTime: post.readTimeInMinutes || estimateReadTime(description),
+            readTime,
             tags,
             category: 'technical',
             type: 'Technical Article',
@@ -257,10 +281,14 @@ const PublicationGallery = () => {
       return items.map((item, idx) => {
         const title = decodeHtmlEntities(item.querySelector('title')?.textContent || 'Untitled');
         const rawDescription = decodeHtmlEntities(item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '');
+        // Try to get full content for better read time estimate
+        const contentEncoded = item.querySelector('content\\:encoded')?.textContent || item.querySelector('content')?.textContent || '';
+        const fullContent = decodeHtmlEntities(contentEncoded.replace(/<[^>]+>/g, '') || rawDescription);
         const keywords = extractKeywords(title, rawDescription);
         const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => decodeHtmlEntities(c.textContent)).filter(Boolean);
         const tags = tagsFound.length > 0 ? tagsFound.slice(0, 5) : keywords;
-        const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
+        // Use actual read time if available, otherwise estimate from full content
+        const readTime = normalizeReadTime(item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent) || estimateReadTime(fullContent);
         return {
           id: `hashnode-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
           title,
@@ -282,15 +310,19 @@ const PublicationGallery = () => {
       return items.map((item, idx) => {
         const title = decodeHtmlEntities(item.title || 'Untitled');
         const rawDescription = decodeHtmlEntities((item.description || '').replace(/<[^>]+>/g, ''));
+        // Try to get full content for better read time estimate
+        const fullContent = decodeHtmlEntities((item.content || item['content:encoded'] || item.description || '').replace(/<[^>]+>/g, ''));
         const keywords = extractKeywords(title, rawDescription);
         const tags = (item.categories && item.categories.length ? item.categories.map(t => decodeHtmlEntities(t)).slice(0, 5) : keywords);
+        // Use actual read time if available, otherwise estimate from full content
+        const readTime = normalizeReadTime(item.readTime || item.read_time) || estimateReadTime(fullContent);
         return {
           id: `hashnode-${idx}-${item.guid || item.link || idx}`,
           title,
           description: rawDescription.slice(0, 200),
           date: item.pubDate || '',
           url: item.link || '#',
-          readTime: item.readTime || item.read_time || estimateReadTime(rawDescription),
+          readTime,
           tags,
           category: 'technical',
           type: 'Technical Article',
