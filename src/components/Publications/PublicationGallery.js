@@ -50,38 +50,53 @@ const PublicationGallery = () => {
         const payload = await tryFetch(candidate);
         if (payload.kind === 'json') {
           const jsonItems = payload.data.items || [];
-          parsedItems = jsonItems.map((item, idx) => ({
-            id: `${source}-${idx}-${item.guid || item.link || idx}`,
-            title: item.title || 'Untitled',
-            description: (item.description || '').replace(/<[^>]+>/g, '').slice(0, 200),
-            date: item.pubDate || '',
-            url: item.link || '#',
-            readTime: source === 'hashnode' ? '5-10 min read' : '4-8 min read',
-            tags: item.categories || [],
-            category: source === 'hashnode' ? 'technical' : 'newsletter',
-            type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
-            featured: false,
-            source
-          }));
+          parsedItems = jsonItems.map((item, idx) => {
+            const title = item.title || 'Untitled';
+            const rawDescription = (item.description || '').replace(/<[^>]+>/g, '');
+            const keywords = extractKeywords(title, rawDescription);
+            const tags = (item.categories && item.categories.length ? item.categories : keywords);
+            const readTime = item.readTime || item.read_time || estimateReadTime(rawDescription);
+            return {
+              id: `${source}-${idx}-${item.guid || item.link || idx}`,
+              title,
+              description: rawDescription.slice(0, 200),
+              date: item.pubDate || '',
+              url: item.link || '#',
+              readTime,
+              tags,
+              category: 'newsletter',
+              type: 'Newsletter',
+              featured: false,
+              source
+            };
+          });
           break;
         } else {
           const xmlText = payload.data;
           const parser = new DOMParser();
           const doc = parser.parseFromString(xmlText, 'application/xml');
           const items = Array.from(doc.querySelectorAll('item'));
-          parsedItems = items.map((item, idx) => ({
-            id: `${source}-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
-            title: item.querySelector('title')?.textContent || 'Untitled',
-            description: item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '')?.slice(0, 200) || '',
-            date: item.querySelector('pubDate')?.textContent || '',
-            url: item.querySelector('link')?.textContent || '#',
-            readTime: source === 'hashnode' ? '5-10 min read' : '4-8 min read',
-            tags: Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean),
-            category: source === 'hashnode' ? 'technical' : 'newsletter',
-            type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
-            featured: false,
-            source
-          }));
+          parsedItems = items.map((item, idx) => {
+            const title = item.querySelector('title')?.textContent || 'Untitled';
+            const rawDescription = item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '';
+            const keywords = extractKeywords(title, rawDescription);
+            const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean);
+            const tags = tagsFound.length ? tagsFound : keywords;
+            const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
+            return {
+              id: `${source}-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
+              title,
+              description: rawDescription.slice(0, 200),
+              date: item.querySelector('pubDate')?.textContent || '',
+              url: item.querySelector('link')?.textContent || '#',
+              readTime,
+              tags,
+              category: 'newsletter',
+              type: 'Newsletter',
+              featured: false,
+              source
+            };
+          });
           break;
         }
       } catch (err) {
@@ -94,6 +109,122 @@ const PublicationGallery = () => {
     }
 
     return parsedItems;
+  };
+
+  const estimateReadTime = (text) => {
+    const words = text ? text.trim().split(/\s+/).length : 0;
+    if (!words) return '';
+    return Math.max(1, Math.round(words / 200));
+  };
+
+  // Extract top 5 keywords from title + description
+  const extractKeywords = (title, description) => {
+    const stopWords = new Set([
+      'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by',
+      'from', 'as', 'is', 'was', 'are', 'were', 'been', 'be', 'have', 'has', 'had', 'do', 'does',
+      'did', 'will', 'would', 'should', 'could', 'may', 'might', 'must', 'can', 'this', 'that',
+      'these', 'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'what', 'which', 'who',
+      'when', 'where', 'why', 'how', 'all', 'each', 'every', 'both', 'few', 'more', 'most',
+      'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too',
+      'very', 'just', 'now', 'then', 'here', 'there', 'about', 'into', 'through', 'during',
+      'before', 'after', 'above', 'below', 'up', 'down', 'out', 'off', 'over', 'under', 'again',
+      'further', 'once', 'get', 'got', 'go', 'goes', 'going', 'come', 'came', 'coming', 'see',
+      'saw', 'seen', 'know', 'knew', 'known', 'think', 'thought', 'take', 'took', 'taken',
+      'give', 'gave', 'given', 'make', 'made', 'say', 'said', 'tell', 'told', 'ask', 'asked'
+    ]);
+
+    const combined = `${title} ${description}`.toLowerCase();
+    const words = combined
+      .replace(/[^\w\s]/g, ' ')
+      .split(/\s+/)
+      .filter(word => word.length > 3 && !stopWords.has(word));
+
+    const wordFreq = {};
+    words.forEach(word => {
+      wordFreq[word] = (wordFreq[word] || 0) + 1;
+    });
+
+    const sorted = Object.entries(wordFreq)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([word]) => word.charAt(0).toUpperCase() + word.slice(1));
+
+    return sorted.length > 0 ? sorted : ['Article'];
+  };
+
+  // Fetch Hashnode articles using GraphQL API
+  const fetchHashnode = async () => {
+    const query = `
+      query GetUserArticles($username: String!, $page: Int!) {
+        user(username: $username) {
+          publication {
+            posts(page: $page) {
+              title
+              brief
+              slug
+              publishedAt
+              readTimeInMinutes
+              tags {
+                name
+              }
+            }
+          }
+        }
+      }
+    `;
+
+    const variables = {
+      username: 'rufilboss',
+      page: 0
+    };
+
+    try {
+      const response = await fetch('https://gql.hashnode.com/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query, variables })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      if (data.errors) {
+        throw new Error(data.errors[0]?.message || 'GraphQL error');
+      }
+
+      const posts = data.data?.user?.publication?.posts || [];
+      
+      return posts.map((post, idx) => {
+        const title = post.title || 'Untitled';
+        const description = post.brief || '';
+        const hashnodeTags = post.tags?.map(t => t.name) || [];
+        const keywords = extractKeywords(title, description);
+        // Use Hashnode tags if available, otherwise use extracted keywords (max 5)
+        const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
+        
+        return {
+          id: `hashnode-${idx}-${post.slug}`,
+          title,
+          description: description.slice(0, 200),
+          date: post.publishedAt || new Date().toISOString(),
+          url: `https://rufilboss.hashnode.dev/${post.slug}`,
+          readTime: post.readTimeInMinutes || estimateReadTime(description),
+          tags,
+          category: 'technical',
+          type: 'Technical Article',
+          featured: false,
+          source: 'hashnode'
+        };
+      });
+    } catch (err) {
+      console.error('Hashnode GraphQL fetch error:', err);
+      throw err;
+    }
   };
 
   // Compute ms until next Sunday 00:00 local
@@ -128,7 +259,7 @@ const PublicationGallery = () => {
     try {
       const results = await Promise.allSettled([
         fetchRSS(undefined, 'substack'),
-        fetchRSS(undefined, 'hashnode')
+        fetchHashnode()
       ]);
 
       const successes = results
@@ -253,7 +384,9 @@ const PublicationGallery = () => {
                 <p className="publication-description">{publication.description}</p>
                 
                 <div className="publication-meta">
-                  <span className="read-time">{publication.readTime}</span>
+                  <span className="read-time">
+                    {publication.readTime ? `${publication.readTime} min` : ''}
+                  </span>
                   <div className="publication-tags">
                     {(publication.tags || []).map((tag, index) => (
                       <span key={index} className="tag">{tag}</span>
