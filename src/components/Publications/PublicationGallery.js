@@ -1,103 +1,184 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const PublicationGallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
-
-  const publications = [
-
-    {
-      id: 1,
-      type: 'Research Paper',
-      title: 'IoT-Based Smart Agriculture Monitoring System',
-      description: 'A comprehensive study on implementing IoT sensors for real-time crop monitoring and yield optimization.',
-      date: '2025',
-      readTime: '8 min read',
-      tags: ['IoT', 'Agriculture', 'Machine Learning'],
-      category: 'research',
-      featured: true,
-      url: '#'
-    },
-    {
-      id: 2,
-      type: 'Blog Post',
-      title: 'DevOps Best Practices for Startups',
-      description: 'Essential DevOps strategies and tools for scaling engineering teams and infrastructure.',
-      date: '2025',
-      readTime: '5 min read',
-      tags: ['DevOps', 'Infrastructure', 'Automation'],
-      category: 'blog',
-      featured: false,
-      url: '#'
-    },
-    {
-      id: 3,
-      type: 'Technical Article',
-      title: 'Building Scalable Microservices Architecture',
-      description: 'A deep dive into designing and implementing microservices for large-scale applications.',
-      date: '2025',
-      readTime: '12 min read',
-      tags: ['Microservices', 'Architecture', 'Scalability'],
-      category: 'technical',
-      featured: true,
-      url: '#'
-    },
-    {
-      id: 4,
-      type: 'Research Paper',
-      title: 'Sustainable Engineering Solutions in Agriculture',
-      description: 'Exploring innovative approaches to sustainable farming through engineering and technology.',
-      date: '2025',
-      readTime: '10 min read',
-      tags: ['Sustainability', 'Engineering', 'Agriculture'],
-      category: 'research',
-      featured: false,
-      url: '#'
-    },
-    {
-      id: 5,
-      type: 'Blog Post',
-      title: 'Civil Engineering Meets Technology',
-      description: 'How modern technology is revolutionizing civil engineering and infrastructure development.',
-      date: '2025',
-      readTime: '6 min read',
-      tags: ['Civil Engineering', 'Technology', 'Innovation'],
-      category: 'blog',
-      featured: false,
-      url: '#'
-    },
-    {
-      id: 6,
-      type: 'Technical Article',
-      title: 'Kubernetes for Agricultural IoT',
-      description: 'Deploying and managing IoT devices in agricultural settings using container orchestration.',
-      date: '2025',
-      readTime: '9 min read',
-      tags: ['Kubernetes', 'IoT', 'Agriculture', 'DevOps'],
-      category: 'technical',
-      featured: true,
-      url: '#'
-    }
-  ];
+  const [publications, setPublications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const categories = [
     { id: 'all', label: 'All Publications' },
     { id: 'research', label: 'Research Papers' },
+    { id: 'newsletter', label: 'Newsletter' },
     { id: 'blog', label: 'Blog Posts' },
     { id: 'technical', label: 'Technical Articles' }
   ];
 
-  const filteredPublications = activeFilter === 'all' 
-    ? publications 
-    : publications.filter(pub => pub.category === activeFilter);
+  const filteredPublications = useMemo(() => {
+    if (activeFilter === 'all') return publications;
+    return publications.filter(pub => pub.category === activeFilter);
+  }, [activeFilter, publications]);
+
+  // Helper: fetch and parse RSS feeds (Substack + Hashnode) without extra deps
+  const fetchRSS = async (feedUrl, source) => {
+    const resolvedFeed = feedUrl || (source === 'substack'
+      ? (process.env.REACT_APP_SUBSTACK_FEED_URL || 'https://rufilboss.substack.com/feed')
+      : (process.env.REACT_APP_HASHNODE_FEED_URL || 'https://rufilboss.hashnode.dev/rss.xml'));
+
+    const candidates = [
+      { url: resolvedFeed, type: 'xml' },
+      { url: `https://api.allorigins.win/raw?url=${encodeURIComponent(resolvedFeed)}`, type: 'xml' },
+      { url: `https://cors.isomorphic-git.org/${resolvedFeed}`, type: 'xml' },
+      { url: `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(resolvedFeed)}`, type: 'json' }
+    ];
+
+    const tryFetch = async (candidate) => {
+      const response = await fetch(candidate.url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (candidate.type === 'json') {
+        return { kind: 'json', data: await response.json() };
+      }
+      return { kind: 'xml', data: await response.text() };
+    };
+
+    let parsedItems = null;
+    let lastErr = null;
+
+    for (const candidate of candidates) {
+      try {
+        const payload = await tryFetch(candidate);
+        if (payload.kind === 'json') {
+          const jsonItems = payload.data.items || [];
+          parsedItems = jsonItems.map((item, idx) => ({
+            id: `${source}-${idx}-${item.guid || item.link || idx}`,
+            title: item.title || 'Untitled',
+            description: (item.description || '').replace(/<[^>]+>/g, '').slice(0, 200),
+            date: item.pubDate || '',
+            url: item.link || '#',
+            readTime: source === 'hashnode' ? '5-10 min read' : '4-8 min read',
+            tags: item.categories || [],
+            category: source === 'hashnode' ? 'technical' : 'newsletter',
+            type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
+            featured: false,
+            source
+          }));
+          break;
+        } else {
+          const xmlText = payload.data;
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(xmlText, 'application/xml');
+          const items = Array.from(doc.querySelectorAll('item'));
+          parsedItems = items.map((item, idx) => ({
+            id: `${source}-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
+            title: item.querySelector('title')?.textContent || 'Untitled',
+            description: item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '')?.slice(0, 200) || '',
+            date: item.querySelector('pubDate')?.textContent || '',
+            url: item.querySelector('link')?.textContent || '#',
+            readTime: source === 'hashnode' ? '5-10 min read' : '4-8 min read',
+            tags: [],
+            category: source === 'hashnode' ? 'technical' : 'newsletter',
+            type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
+            featured: false,
+            source
+          }));
+          break;
+        }
+      } catch (err) {
+        lastErr = err;
+      }
+    }
+
+    if (!parsedItems) {
+      throw lastErr || new Error('Failed to fetch feed');
+    }
+
+    return parsedItems;
+  };
+
+  // Compute ms until next Sunday 00:00 local
+  const getMsUntilNextSunday = () => {
+    const now = new Date();
+    const day = now.getDay();
+    const daysUntilSunday = (7 - day) % 7 || 7;
+    const nextSunday = new Date(now);
+    nextSunday.setDate(now.getDate() + daysUntilSunday);
+    nextSunday.setHours(0, 0, 0, 0);
+    return nextSunday - now;
+  };
+
+  const fetchAll = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const [substackItems, hashnodeItems] = await Promise.all([
+        fetchRSS(undefined, 'substack'),
+        fetchRSS(undefined, 'hashnode')
+      ]);
+
+      // Sort by date desc and keep top 10
+      const combined = [...substackItems, ...hashnodeItems]
+        .map(item => ({
+          ...item,
+          dateObj: item.date ? new Date(item.date) : new Date()
+        }))
+        .sort((a, b) => b.dateObj - a.dateObj)
+        .slice(0, 10)
+        .map(item => ({
+          ...item,
+          date: item.dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+        }));
+
+      // Add placeholder for research (upcoming)
+      const researchPlaceholder = {
+        id: 'researchgate-upcoming',
+        type: 'Research Paper',
+        title: 'Upcoming publication on ResearchGate',
+        description: 'A new research paper is coming soon. Stay tuned!',
+        date: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }),
+        readTime: 'Coming soon',
+        tags: ['Research', 'Engineering'],
+        category: 'research',
+        featured: true,
+        url: '#',
+        source: 'researchgate'
+      };
+
+      setPublications([researchPlaceholder, ...combined]);
+    } catch (err) {
+      console.error('Error fetching publications:', err);
+      setError('Unable to load publications right now. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    let sundayTimeout;
+    let weeklyInterval;
+
+    // Initial fetch
+    fetchAll();
+
+    // Schedule next Sunday refresh
+    sundayTimeout = setTimeout(() => {
+      fetchAll();
+      weeklyInterval = setInterval(fetchAll, 7 * 24 * 60 * 60 * 1000);
+    }, getMsUntilNextSunday());
+
+    return () => {
+      if (sundayTimeout) clearTimeout(sundayTimeout);
+      if (weeklyInterval) clearInterval(weeklyInterval);
+    };
+  }, [fetchAll]);
 
   const handleFilterClick = (categoryId) => {
     setActiveFilter(categoryId);
   };
 
   const handleReadMore = (url) => {
-    // For now, just show an alert. In a real app, this would navigate to the article
-    alert('This would open the full article. URL: ' + url);
+    if (!url || url === '#') return;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -108,6 +189,17 @@ const PublicationGallery = () => {
           <p className="section-subtitle">
             Sharing knowledge through research papers, technical articles, and blog posts
           </p>
+        </div>
+
+        <div className="newsletter-cta">
+          <div>
+            <h4>Newsletter & Research Updates</h4>
+            <p>Subscribe to get my Substack newsletters, Hashnode deep-dives, and upcoming ResearchGate publications.</p>
+          </div>
+          <div className="cta-actions">
+            <a className="btn-primary" href="https://rufilboss.substack.com" target="_blank" rel="noopener noreferrer">Subscribe on Substack</a>
+            <a className="btn-secondary" href="https://rufilboss.hashnode.dev/" target="_blank" rel="noopener noreferrer">Read on Hashnode</a>
+          </div>
         </div>
 
         <div className="category-filter">
@@ -123,7 +215,23 @@ const PublicationGallery = () => {
         </div>
 
         <Row>
-          {filteredPublications.map((publication) => (
+          {loading && (
+            <Col xs={12} className="text-center py-5">
+              <div className="spinner-border text-primary" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="mt-3 text-muted">Fetching latest articles...</p>
+            </Col>
+          )}
+
+          {error && (
+            <Col xs={12} className="text-center py-5">
+              <p className="text-danger mb-2">{error}</p>
+              <button className="btn-primary" onClick={fetchAll}>Retry</button>
+            </Col>
+          )}
+
+          {!loading && !error && filteredPublications.map((publication) => (
             <Col key={publication.id} lg={6} className="mb-4">
               <div className={`publication-card ${publication.featured ? 'featured' : ''}`}>
                 <div className="publication-header">
@@ -137,7 +245,7 @@ const PublicationGallery = () => {
                 <div className="publication-meta">
                   <span className="read-time">{publication.readTime}</span>
                   <div className="publication-tags">
-                    {publication.tags.map((tag, index) => (
+                    {(publication.tags || []).map((tag, index) => (
                       <span key={index} className="tag">{tag}</span>
                     ))}
                   </div>
@@ -146,12 +254,19 @@ const PublicationGallery = () => {
                 <button 
                   className="read-more-btn"
                   onClick={() => handleReadMore(publication.url)}
+                  disabled={!publication.url || publication.url === '#'}
                 >
-                  Read More →
+                  {publication.url && publication.url !== '#' ? 'Read More →' : 'Coming Soon'}
                 </button>
               </div>
             </Col>
           ))}
+
+          {!loading && !error && filteredPublications.length === 0 && (
+            <Col xs={12} className="text-center py-5">
+              <p className="text-muted">No publications found for this category yet.</p>
+            </Col>
+          )}
         </Row>
 
         <div className="publication-stats text-center">
