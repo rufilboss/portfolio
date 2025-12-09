@@ -152,62 +152,78 @@ const PublicationGallery = () => {
     return sorted.length > 0 ? sorted : ['Article'];
   };
 
-  // Fetch Hashnode articles using GraphQL API (with fallback to RSS)
+  // Fetch Hashnode articles - try multiple methods
   const fetchHashnode = async () => {
-    // Try GraphQL API first
-    try {
-      const query = `
-        query GetPublicationPosts($host: String!, $page: Int!) {
-          publication(host: $host) {
-            posts(page: $page) {
-              title
-              brief
-              slug
-              publishedAt
-              readTimeInMinutes
-              tags {
-                name
+    const rssUrl = 'https://rufilboss.hashnode.dev/rss.xml';
+    
+    // Try multiple CORS proxies and methods
+    const methods = [
+      // Method 1: Direct RSS with CORS proxy
+      async () => {
+        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(rssUrl)}`;
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const xmlText = await response.text();
+        return parseHashnodeRSS(xmlText);
+      },
+      // Method 2: RSS2JSON API
+      async () => {
+        const jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+        const response = await fetch(jsonUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (data.status !== 'ok') throw new Error('RSS2JSON error');
+        return parseHashnodeJSON(data.items || []);
+      },
+      // Method 3: Another CORS proxy
+      async () => {
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(rssUrl)}`;
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const xmlText = await response.text();
+        return parseHashnodeRSS(xmlText);
+      },
+      // Method 4: Try GraphQL as last resort
+      async () => {
+        const query = `
+          query GetPublicationPosts($host: String!) {
+            publication(host: $host) {
+              posts(first: 20) {
+                edges {
+                  node {
+                    title
+                    brief
+                    slug
+                    publishedAt
+                    readTimeInMinutes
+                    tags {
+                      name
+                    }
+                  }
+                }
               }
             }
           }
-        }
-      `;
-
-      const variables = {
-        host: 'rufilboss.hashnode.dev',
-        page: 0
-      };
-
-      const response = await fetch('https://gql.hashnode.com/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query, variables })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-
-      const data = await response.json();
-      
-      if (data.errors) {
-        console.warn('Hashnode GraphQL errors:', data.errors);
-        throw new Error(data.errors[0]?.message || 'GraphQL error');
-      }
-
-      const posts = data.data?.publication?.posts || [];
-      
-      if (posts.length > 0) {
+        `;
+        const response = await fetch('https://gql.hashnode.com/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            query, 
+            variables: { host: 'rufilboss.hashnode.dev' } 
+          })
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (data.errors) throw new Error(data.errors[0]?.message);
+        const posts = data.data?.publication?.posts?.edges?.map(e => e.node) || [];
+        if (posts.length === 0) throw new Error('No posts found');
         return posts.map((post, idx) => {
           const title = post.title || 'Untitled';
           const description = post.brief || '';
           const hashnodeTags = post.tags?.map(t => t.name) || [];
           const keywords = extractKeywords(title, description);
-          // Use Hashnode tags if available, otherwise use extracted keywords (max 5)
           const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
-          
           return {
             id: `hashnode-${idx}-${post.slug}`,
             title,
@@ -223,17 +239,76 @@ const PublicationGallery = () => {
           };
         });
       }
-    } catch (graphqlErr) {
-      console.warn('Hashnode GraphQL failed, trying RSS fallback:', graphqlErr);
+    ];
+
+    // Helper: Parse Hashnode RSS XML
+    const parseHashnodeRSS = (xmlText) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xmlText, 'application/xml');
+      const items = Array.from(doc.querySelectorAll('item'));
+      return items.map((item, idx) => {
+        const title = item.querySelector('title')?.textContent || 'Untitled';
+        const rawDescription = item.querySelector('description')?.textContent?.replace(/<[^>]+>/g, '') || '';
+        const keywords = extractKeywords(title, rawDescription);
+        const tagsFound = Array.from(item.querySelectorAll('category')).map((c) => c.textContent).filter(Boolean);
+        const tags = tagsFound.length > 0 ? tagsFound.slice(0, 5) : keywords;
+        const readTime = item.querySelector('readingtime')?.textContent || item.querySelector('readtime')?.textContent || estimateReadTime(rawDescription);
+        return {
+          id: `hashnode-${idx}-${item.querySelector('guid')?.textContent || item.querySelector('link')?.textContent || idx}`,
+          title,
+          description: rawDescription.slice(0, 200),
+          date: item.querySelector('pubDate')?.textContent || '',
+          url: item.querySelector('link')?.textContent || '#',
+          readTime,
+          tags,
+          category: 'technical',
+          type: 'Technical Article',
+          featured: false,
+          source: 'hashnode'
+        };
+      });
+    };
+
+    // Helper: Parse Hashnode JSON from RSS2JSON
+    const parseHashnodeJSON = (items) => {
+      return items.map((item, idx) => {
+        const title = item.title || 'Untitled';
+        const rawDescription = (item.description || '').replace(/<[^>]+>/g, '');
+        const keywords = extractKeywords(title, rawDescription);
+        const tags = (item.categories && item.categories.length ? item.categories.slice(0, 5) : keywords);
+        return {
+          id: `hashnode-${idx}-${item.guid || item.link || idx}`,
+          title,
+          description: rawDescription.slice(0, 200),
+          date: item.pubDate || '',
+          url: item.link || '#',
+          readTime: item.readTime || item.read_time || estimateReadTime(rawDescription),
+          tags,
+          category: 'technical',
+          type: 'Technical Article',
+          featured: false,
+          source: 'hashnode'
+        };
+      });
+    };
+
+    // Try each method until one works
+    let lastError = null;
+    for (const method of methods) {
+      try {
+        const result = await method();
+        if (result && result.length > 0) {
+          console.log(`Hashnode fetch succeeded with ${result.length} articles`);
+          return result;
+        }
+      } catch (err) {
+        lastError = err;
+        console.warn('Hashnode fetch method failed:', err.message);
+        continue;
+      }
     }
 
-    // Fallback to RSS feed
-    try {
-      return await fetchRSS('https://rufilboss.hashnode.dev/rss.xml', 'hashnode');
-    } catch (rssErr) {
-      console.error('Hashnode RSS fallback also failed:', rssErr);
-      throw new Error('Failed to fetch Hashnode articles');
-    }
+    throw lastError || new Error('All Hashnode fetch methods failed');
   };
 
   // Compute ms until next Sunday 00:00 local
