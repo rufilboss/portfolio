@@ -64,8 +64,8 @@ const PublicationGallery = () => {
               url: item.link || '#',
               readTime,
               tags,
-              category: 'newsletter',
-              type: 'Newsletter',
+              category: source === 'hashnode' ? 'technical' : 'newsletter',
+              type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
               featured: false,
               source
             };
@@ -91,8 +91,8 @@ const PublicationGallery = () => {
               url: item.querySelector('link')?.textContent || '#',
               readTime,
               tags,
-              category: 'newsletter',
-              type: 'Newsletter',
+              category: source === 'hashnode' ? 'technical' : 'newsletter',
+              type: source === 'hashnode' ? 'Technical Article' : 'Newsletter',
               featured: false,
               source
             };
@@ -152,12 +152,13 @@ const PublicationGallery = () => {
     return sorted.length > 0 ? sorted : ['Article'];
   };
 
-  // Fetch Hashnode articles using GraphQL API
+  // Fetch Hashnode articles using GraphQL API (with fallback to RSS)
   const fetchHashnode = async () => {
-    const query = `
-      query GetUserArticles($username: String!, $page: Int!) {
-        user(username: $username) {
-          publication {
+    // Try GraphQL API first
+    try {
+      const query = `
+        query GetPublicationPosts($host: String!, $page: Int!) {
+          publication(host: $host) {
             posts(page: $page) {
               title
               brief
@@ -170,15 +171,13 @@ const PublicationGallery = () => {
             }
           }
         }
-      }
-    `;
+      `;
 
-    const variables = {
-      username: 'rufilboss',
-      page: 0
-    };
+      const variables = {
+        host: 'rufilboss.hashnode.dev',
+        page: 0
+      };
 
-    try {
       const response = await fetch('https://gql.hashnode.com/', {
         method: 'POST',
         headers: {
@@ -194,36 +193,46 @@ const PublicationGallery = () => {
       const data = await response.json();
       
       if (data.errors) {
+        console.warn('Hashnode GraphQL errors:', data.errors);
         throw new Error(data.errors[0]?.message || 'GraphQL error');
       }
 
-      const posts = data.data?.user?.publication?.posts || [];
+      const posts = data.data?.publication?.posts || [];
       
-      return posts.map((post, idx) => {
-        const title = post.title || 'Untitled';
-        const description = post.brief || '';
-        const hashnodeTags = post.tags?.map(t => t.name) || [];
-        const keywords = extractKeywords(title, description);
-        // Use Hashnode tags if available, otherwise use extracted keywords (max 5)
-        const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
-        
-        return {
-          id: `hashnode-${idx}-${post.slug}`,
-          title,
-          description: description.slice(0, 200),
-          date: post.publishedAt || new Date().toISOString(),
-          url: `https://rufilboss.hashnode.dev/${post.slug}`,
-          readTime: post.readTimeInMinutes || estimateReadTime(description),
-          tags,
-          category: 'technical',
-          type: 'Technical Article',
-          featured: false,
-          source: 'hashnode'
-        };
-      });
-    } catch (err) {
-      console.error('Hashnode GraphQL fetch error:', err);
-      throw err;
+      if (posts.length > 0) {
+        return posts.map((post, idx) => {
+          const title = post.title || 'Untitled';
+          const description = post.brief || '';
+          const hashnodeTags = post.tags?.map(t => t.name) || [];
+          const keywords = extractKeywords(title, description);
+          // Use Hashnode tags if available, otherwise use extracted keywords (max 5)
+          const tags = hashnodeTags.length > 0 ? hashnodeTags.slice(0, 5) : keywords;
+          
+          return {
+            id: `hashnode-${idx}-${post.slug}`,
+            title,
+            description: description.slice(0, 200),
+            date: post.publishedAt || new Date().toISOString(),
+            url: `https://rufilboss.hashnode.dev/${post.slug}`,
+            readTime: post.readTimeInMinutes || estimateReadTime(description),
+            tags,
+            category: 'technical',
+            type: 'Technical Article',
+            featured: false,
+            source: 'hashnode'
+          };
+        });
+      }
+    } catch (graphqlErr) {
+      console.warn('Hashnode GraphQL failed, trying RSS fallback:', graphqlErr);
+    }
+
+    // Fallback to RSS feed
+    try {
+      return await fetchRSS('https://rufilboss.hashnode.dev/rss.xml', 'hashnode');
+    } catch (rssErr) {
+      console.error('Hashnode RSS fallback also failed:', rssErr);
+      throw new Error('Failed to fetch Hashnode articles');
     }
   };
 
@@ -262,10 +271,26 @@ const PublicationGallery = () => {
         fetchHashnode()
       ]);
 
+      const substackResult = results[0];
+      const hashnodeResult = results[1];
+
+      if (substackResult.status === 'rejected') {
+        console.error('Substack fetch failed:', substackResult.reason);
+      }
+      if (hashnodeResult.status === 'rejected') {
+        console.error('Hashnode fetch failed:', hashnodeResult.reason);
+      }
+
       const successes = results
         .filter(r => r.status === 'fulfilled')
         .map(r => r.value)
         .flat();
+
+      console.log('Fetched articles:', {
+        substack: substackResult.status === 'fulfilled' ? substackResult.value.length : 0,
+        hashnode: hashnodeResult.status === 'fulfilled' ? hashnodeResult.value.length : 0,
+        total: successes.length
+      });
 
       const combined = successes
         .map(item => ({
@@ -284,6 +309,7 @@ const PublicationGallery = () => {
         setError('Unable to load publications right now. Please try again later.');
       } else {
         setPublications([researchPlaceholder, ...combined]);
+        setError(null); // Clear any previous errors
       }
     } catch (err) {
       console.error('Error fetching publications:', err);
